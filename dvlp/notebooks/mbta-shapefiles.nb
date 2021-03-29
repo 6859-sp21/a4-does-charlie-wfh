@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    258481,       4476]
-NotebookOptionsPosition[    256760,       4437]
-NotebookOutlinePosition[    257187,       4454]
-CellTagsIndexPosition[    257144,       4451]
+NotebookDataLength[    262073,       4574]
+NotebookOptionsPosition[    259770,       4524]
+NotebookOutlinePosition[    260196,       4541]
+CellTagsIndexPosition[    260153,       4538]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4431,12 +4431,99 @@ VrXnoic7BL+KHVLxFP4JqJZEacwtLKoQbZVA+P8C1F0Asg==
   PlotRange->{{0, 353.25}, {0, 420.}}]], "Output",
  CellChangeTimes->{{3.8260304112626467`*^9, 3.826030418488225*^9}},
  CellLabel->"Out[62]=",ExpressionUUID->"15712265-8ab5-4c26-99e1-41ca595f0d09"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Note: this has duplicate stations entries", "Item",
+ CellChangeTimes->{{3.82603180672911*^9, 
+  3.8260318528303127`*^9}},ExpressionUUID->"daf44cba-ea15-49e2-ba24-\
+1dad9467f857"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+E.g. Park Street station has one row entry for both RED and GREEN lines\
+\>", "Subitem",
+ CellChangeTimes->{{3.82603180672911*^9, 3.826031854119791*^9}, {
+  3.826031919881116*^9, 3.826031927545146*^9}, {3.826031975785836*^9, 
+  3.826031988371953*^9}},ExpressionUUID->"cb07c2ad-35a8-4d82-bace-\
+ac784c4d016d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stationsDataset", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"stations", "=", 
+       RowBox[{
+        RowBox[{"Association", "[", 
+         RowBox[{"shapeFilesAssociations", "[", 
+          RowBox[{"\"\<MBTA_NODE\>\"", ",", "\"\<LabeledData\>\""}], "]"}], 
+         "]"}], "[", "\"\<STATION\>\"", "]"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Prepend", "[", 
+      RowBox[{
+       RowBox[{"Join", "@@", 
+        RowBox[{"KeyValueMap", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox[
+            RowBox[{"Join", "[", 
+             RowBox[{
+              SuperscriptBox[
+               RowBox[{"Thread", "[", 
+                RowBox[{"{", 
+                 RowBox[{"#1", ",", 
+                  RowBox[{"stations", "[", 
+                   RowBox[{"[", "#2", "]"}], "]"}]}], "}"}], "]"}], 
+               "\[Transpose]"], ",", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"First", "@*", "GeoPosition"}], "/@", 
+                 RowBox[{
+                  RowBox[{
+                  "geometryAssociations", "[", "\"\<MBTA_NODE\>\"", "]"}], 
+                  "[", 
+                  RowBox[{"[", 
+                   RowBox[{"#2", ",", "1"}], "]"}], "]"}]}], ")"}], 
+               "\[Transpose]"]}], "]"}], "\[Transpose]"], "&"}], ",", 
+          "groupedStationsByLine"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<LINE\>\"", ",", "\"\<STATION NAME\>\"", ",", "\"\<LATITUDE\>\"", 
+         ",", "\"\<LONGITUDE\>\""}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.826031626090094*^9, 3.826031638446479*^9}, {
+  3.826031947778974*^9, 3.82603195585843*^9}},
+ CellLabel->
+  "In[119]:=",ExpressionUUID->"3934676b-cde0-4b54-b095-674f9bac91bc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<data/mbta_rapid_transit_stations.csv\>\"", ",", "stationsDataset", 
+   ",", "\"\<CSV\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.82603164066591*^9, 3.826031663582048*^9}},
+ CellLabel->
+  "In[121]:=",ExpressionUUID->"e2a2a3ed-c7a4-4fb8-8af7-c27013e63042"],
+
+Cell[BoxData["\<\"data/mbta_rapid_transit_stations.csv\"\>"], "Output",
+ CellChangeTimes->{3.826031664048039*^9, 3.826031965707939*^9},
+ CellLabel->
+  "Out[121]=",ExpressionUUID->"55c6a2de-16ba-4bac-a3ad-6e4fbd075512"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1440, 786},
-WindowMargins->{{-1440, Automatic}, {0, Automatic}},
+WindowSize->{1440., 760.5},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
 Magnification:>1.1 Inherited,
 FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
 StyleDefinitions->"Default.nb",
@@ -4475,6 +4562,17 @@ Cell[14659, 410, 2778, 74, 244, "Input",ExpressionUUID->"b7a26e93-d9a0-4985-b23b
 Cell[CellGroupData[{
 Cell[17462, 488, 1628, 42, 104, "Input",ExpressionUUID->"9a9c4677-74fe-4bb7-a761-cdb82fb53303"],
 Cell[19093, 532, 237627, 3900, 480, "Output",ExpressionUUID->"15712265-8ab5-4c26-99e1-41ca595f0d09"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[256757, 4437, 184, 3, 35, "Item",ExpressionUUID->"daf44cba-ea15-49e2-ba24-1dad9467f857"],
+Cell[CellGroupData[{
+Cell[256966, 4444, 318, 6, 28, "Subitem",ExpressionUUID->"cb07c2ad-35a8-4d82-bace-ac784c4d016d"],
+Cell[257287, 4452, 1859, 49, 85, "Input",ExpressionUUID->"3934676b-cde0-4b54-b095-674f9bac91bc"],
+Cell[CellGroupData[{
+Cell[259171, 4505, 314, 7, 33, "Input",ExpressionUUID->"e2a2a3ed-c7a4-4fb8-8af7-c27013e63042"],
+Cell[259488, 4514, 218, 3, 37, "Output",ExpressionUUID->"55c6a2de-16ba-4bac-a3ad-6e4fbd075512"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
