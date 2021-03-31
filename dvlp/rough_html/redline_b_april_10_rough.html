@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js">
+    </script>
+</head>
+<body>
+    <div id="redline">
+        
+    </div>
+    <script type="text/javascript">
+
+        const modifyArray = (array, callback) => {
+            for (let i = 0; i < array.length; i++) {
+                array[i] = callback(array[i]);
+                }
+        };
+
+
+        //radiusData is an array containing the new radius for the circle elements
+
+        let xOffset = 20;
+        let trackLength = 1500;
+        let stationLocs = [0., 0.0703457, 0.113358, 0.159099, 0.218291, 0.335773, 0.370775,
+            0.377622, 0.396058, 0.440342, 0.484004, 0.527031, 0.716145, 0.833662,
+            0.902474, 1.];
+        modifyArray(stationLocs, x => trackLength*x);
+        console.log(stationLocs);
+        let stationRatios = [0.0502241, 0.0473616, 0.0423652, 0.0448373, 0.0699934, 0.121033,
+            0.0370897, 0.0474307, 0.0472123, 0.0753707, 0.12862, 0.0593102,
+            0.05057, 0.113786, 0.0517834, 0.0778456];
+        let stationData = [];
+        for (let i = 0; i <stationLocs.length; i++){
+            stationData.push([stationLocs[i],stationRatios[i]]);
+        };
+        const trackMaker = (stationData,xOffset) => {
+            let trackData = [];
+            let numSteps = 40;
+            let scale = 250;
+            var x1;
+            var x2;
+            var w1;
+            var w2;
+            for (let i = 0; i <stationData.length -1; i++){
+                x1 = stationData[i][0] + xOffset;
+                x2 = stationData[i+1][0] + xOffset;
+                w1 = stationData[i][1]*scale;
+                w2 = stationData[i+1][1]*scale;
+                slope = (w2-w1)/numSteps;
+                stepSize = (x2-x1)/numSteps;
+                for (let j = 0; j < numSteps; j++){
+                    trackData.push([x1+j*stepSize-1,x1+(j+1)*stepSize+1,w1+j*slope]);
+                };
+            };
+            return trackData;
+        };
+
+        trackData = trackMaker(stationData,xOffset);
+        console.log(trackData);
+
+
+
+        
+
+
+
+        //Select the div element
+
+        let selectDiv = d3.select("#redline")
+        .append("svg:svg")
+        .attr("width",2*xOffset + stationLocs[stationLocs.length-1])
+        .attr("height",100)
+        .style("background-color", "white");
+
+        selectDiv.selectAll("path")
+        .data(trackData)
+        .enter()
+        .append("path")
+        .attr("d", function(d){return `M ${d[0]} 50 L ${d[1]} 50`})
+        .style("stroke-width",function(d){return d[2]})
+        .style("stroke","rgb(255,0,0)");
+
+        selectDiv.selectAll("circle")
+        .data(stationData)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d){return d[0] + xOffset})
+        .attr("cy",50)
+        .attr("r",function(d){return d[1]*100})
+        .style("fill", "rgb(255,255,255)")
+        .style("stroke", "rgb(0,0,0")
+        .style("stroke-width", 3);
+
+       
+    </script>
+</body>
+</html>
