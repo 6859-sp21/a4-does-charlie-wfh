@@ -151,7 +151,9 @@
         .attr("r",function(d){return d[1]})
         .style("fill", "rgb(255,255,255)")
         .style("stroke", "rgb(0,0,0")
-        .style("stroke-width", 3);
+        .style("stroke-width", 3)
+        .on("mouseover", function(){d3.select(this).style("fill", "darkgray");})
+        .on("mouseout", function(){d3.select(this).style("fill", "white");});;
 
        
     </script>
