@@ -16,6 +16,29 @@
                 }
         };
 
+                const sigmoid = (x) => {
+            return 1/(1+Math.exp(-x));
+        };
+
+
+        const sigmoidMaker = (x1,x2,xOffset,y1,y2,w1,w2) => {
+            let sigData = [];
+            let numSteps = 100;
+            let xCenter = (x2+x1)/2;
+            let stepSize = (x2-x1)/numSteps;
+            let xScale = 6/(x2-xCenter);
+            let yScale = y2-y1;
+            let slope = (w2-w1)/numSteps;
+            for (let i = 0; i < numSteps; i++){
+                let xa = x1+i*stepSize-1;
+                let xb = x1+(i+1)*stepSize+1
+                let ya = sigmoid((xa-xCenter)*xScale)*yScale+y1;
+                let yb = sigmoid((xb-xCenter)*xScale)*yScale+y1;
+                sigData.push([xa+xOffset,xb+xOffset,ya,yb,w1+i*slope,"rgb(252, 146, 114)"])
+            };
+            return sigData;
+        };
+
         const stationMaker = (stationLocs,stationRatios,trackY) => {
             let stationData = [];
             for (let i = 0; i <stationLocs.length; i++){
@@ -24,30 +47,41 @@
             return stationData;
         };
 
-        const trackMaker = (stationData,xOffset,trackY,color) => {
+        const trackMaker = (stationData,xOffset,yLeft,yRight,stationIndexLeft,stationIndexRight,color) => {
             let trackData = [];
             // should make the number of steps adaptive
-            let numSteps = 40;
+            let stepSize = 2;
             let scale = 250;
             var x1;
             var x2;
             var w1;
             var w2;
+            var slope;
             for (let i = 0; i <stationData.length -1; i++){
-                x1 = stationData[i][0] + xOffset;
-                x2 = stationData[i+1][0] + xOffset;
+                // Eventually move stationMaker into this loop
+                x1 = stationData[i][0];
+                x2 = stationData[i+1][0];
                 w1 = stationData[i][1]*scale;
                 w2 = stationData[i+1][1]*scale;
+                let xLeft = stationData[stationIndexLeft][0];
+                let xRight = stationData[stationIndexRight][0];
+                let xCenter = (xLeft+xRight)/2;
+                let xScale = 6/(xRight-xCenter);
+                let yScale = yRight-yLeft;
+                let numSteps = (x2-x1)/stepSize;
                 slope = (w2-w1)/numSteps;
-                stepSize = (x2-x1)/numSteps;
                 for (let j = 0; j < numSteps; j++){
-                    trackData.push([x1+j*stepSize-1,x1+(j+1)*stepSize+1,w1+j*slope,trackY,color]);
+                    let xa = x1+j*stepSize-1;
+                    let xb = x1+(j+1)*stepSize+1;
+                    let ya = sigmoid((xa-xCenter)*xScale)*yScale+yLeft;
+                    let yb = sigmoid((xb-xCenter)*xScale)*yScale+yLeft;
+                    trackData.push([xa+xOffset,xb+xOffset,ya,yb,w1+j*slope,color])
                 };
             };
             return trackData;
         };
 
-        const
+
 
         // layout contants
         let xOffset = 20;
@@ -60,7 +94,7 @@
             0.370775, 0.377622, 0.396058, 0.440342, 0.484004, 0.527031, 0.716145, 
             0.833662, 0.902474, 1.];
 
-        let stationLocsA = [0.716145, 0.761414, 0.833662, 0.902474];
+        let stationLocsA = [0.527031,0.716145, 0.761414, 0.833662, 0.902474];
 
         modifyArray(stationLocsA, x => trackLength*x);
         modifyArray(stationLocsB, x => trackLength*x);
@@ -70,7 +104,7 @@
             0.121033, 0.0370897, 0.0474307, 0.0472123, 0.0753707, 0.12862, 
             0.0593102, 0.05057, 0.113786, 0.0517834, 0.0778456];
 
-        let stationRatiosA = [0.101019, 0.153449, 0.133307, 0.149862];
+        let stationRatiosA = [0.0593102,0.101019, 0.153449, 0.133307, 0.149862];
 
         
 
@@ -83,10 +117,12 @@
 
         
         //data for making track lines
-        trackDataA = trackMaker(stationDataA,xOffset,yA,"rgb(252, 146, 114)");
-        trackDataB = trackMaker(stationDataB,xOffset,yB,"rgb(222, 45, 38)");
-        trackData = trackDataA.concat(trackDataB);
+        let trackDataA = trackMaker(stationDataA,xOffset,yB,yA,0,1,"rgb(252, 146, 114)");
+        let trackDataB = trackMaker(stationDataB,xOffset,yB,yB,0,1,"rgb(222, 45, 38)");
+        let trackData = trackDataA.concat(trackDataB);
         console.log(trackData);
+
+        
 
 
 
@@ -104,9 +140,9 @@
         .data(trackData)
         .enter()
         .append("path")
-        .attr("d", function(d){return `M ${d[0]} ${d[3]} L ${d[1]} ${d[3]}`})
-        .style("stroke-width",function(d){return d[2]})
-        .style("stroke",function(d){return(d[4])});
+        .attr("d", function(d){return `M ${d[0]} ${d[2]} L ${d[1]} ${d[3]}`})
+        .style("stroke-width",function(d){return d[4]})
+        .style("stroke",function(d){return(d[5])});
 
         selectDiv.selectAll("circle")
         .data(stationData)
