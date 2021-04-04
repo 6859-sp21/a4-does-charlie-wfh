@@ -1,0 +1,81 @@
+{
+	"RED-A":{
+		"savin hill":1.7148438941976942,
+		"fields corner":1.8755952591778198,
+		"shawmut":1.9810839084419751,
+		"ashmont":2.083968900850377
+	},
+	"RED-B":{
+		"alewife":0.0,
+		"davis":0.21515264072287665,
+		"porter":0.3467059253904779,
+		"harvard":0.4866033678994292,
+		"central":0.6676423012037556,
+		"kendall mit":0.8646724428832709,
+		"charles mgh":1.0269625082588267,
+		"park street":1.1340177758370795,
+		"downtown crossing":1.1549586824627418,
+		"south station":1.2113437042022748,
+		"broadway":1.3467879349914114,
+		"andrew":1.4803285201561585,
+		"jfk umass":1.6119269566955645,
+		"north quincy":2.190332336846321,
+		"quincy center":2.5497587448991688,
+		"quincy adams":2.7602200294393935,
+		"braintree":3.058503348942086
+	},
+	"BLUE":{
+		"bowdoin":0.0,
+		"government center":3.308830084770763e-2,
+		"state street":5.373485052243144e-2,
+		"aquarium":0.11698688289742175,
+		"maverick":0.2858881629814894,
+		"airport":0.40364890204204346,
+		"wood island":0.5097203104066377,
+		"orient heights":0.7128031837433602,
+		"suffolk downs":0.8027400922192327,
+		"beachmont":0.8832492407457472,
+		"revere beach":0.9986464958021519,
+		"wonderland":1.063205523014716
+	},
+	"ORANGE":{
+		"forest hills":0.0,
+		"green street":0.11862374278155631,
+		"stony brook":0.19972526244579583,
+		"jackson square":0.2840174752132353,
+		"roxbury crossing":0.3767346778703305,
+		"ruggles":0.4602600666681049,
+		"massachusetts ave":0.5383091930234039,
+		"back bay":0.6517736426674025,
+		"tufts medical center":0.7746906512832072,
+		"chinatown":0.81530389098851,
+		"downtown crossing":0.8564441244293192,
+		"state street":0.8986587024561025,
+		"haymarket":0.9419463860489927,
+		"north station":0.9875234215652601,
+		"community college":1.1131171595520009,
+		"sullivan square":1.2624791200004963,
+		"assembly":1.348849806023911,
+		"wellington":1.4487678484310114,
+		"malden center":1.7077576742303588,
+		"oak grove":1.8346808255488112
+	},
+	"GREEN-B":{},
+	"GREEN-C":{},
+	"GREEN-D":{
+		"hynes convention center":0.6399382302253682,
+		"kenmore":0.7219836436979131,
+		"riverside":2.5759705289361037
+	},
+	"GREEN-E":{
+		"north station":0.21373363471073167,
+		"haymarket":0.258741428627008,
+		"government center":0.29782530215221736,
+		"park street":0.3437131453057393,
+		"boylston":0.3843450653557298,
+		"arlington":0.45567246363786135,
+		"copley":0.5317312157900783,
+		"prudential":0.6019101813354976,
+		"symphony":0.6658460659501007
+	}
+}

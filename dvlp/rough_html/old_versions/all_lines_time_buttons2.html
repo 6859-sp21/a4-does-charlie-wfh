@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://d3js.org/d3.v6.min.js">
+    </script>
+    <script type="text/javascript" src="time_data/liveStationLoader.js">
+    </script>
+</head>
+<body>
+    <div id="redline">
+        <button id="forward_button" type="button">Time Forward</button>
+        <button id="backward_button">Time Backward</button>
+        <br />
+    </div>
+    <script type="text/javascript">
+        //liveStationData = JSON.parse(liveStationData);
+        console.log(liveStationData);
+
+        // layout contants
+        const trackScale = 300; //scales the x-coordinate from the dataset
+        const stepSize = 1; // Length of sigmoid elements, in pixels
+        const pathWidthScale = 50; //scales width of tracks
+        const stationScale = 20; //scales radius of stations
+
+        // map characteristics
+        liveStationData["RED-B"].yLeft = 100;
+        liveStationData["RED-B"].yRight = 100;
+        liveStationData["RED-B"].color = "rgb(222, 45, 38)";
+        liveStationData["RED-B"].xOffset = 20;
+        liveStationData["RED-A"].yLeft = 100;
+        liveStationData["RED-A"].yRight = 75;
+        liveStationData["RED-A"].color = "rgb(252, 146, 114)";
+        liveStationData["RED-A"].xOffset = 20;
+        liveStationData["ORANGE"].yLeft = 200;
+        liveStationData["ORANGE"].yRight = 200;
+        liveStationData["ORANGE"].xOffset = 20;
+        liveStationData["ORANGE"].color = "rgb(253,127,0)";
+        liveStationData["BLUE"].yLeft = 100;
+        liveStationData["BLUE"].yRight = 100;
+        liveStationData["BLUE"].xOffset = 1300;
+        liveStationData["BLUE"].color = "rgb(0,0,253)";
+
+        const numDays = liveStationData["RED-B"].validations.length
+        const startDay = 439;
+        
+        let starterKeys = ["RED-A", "RED-B","ORANGE","BLUE"]
+        
+        let timeIndex = startDay;
+
+        //helper functions
+        const modifyArray = (array, callback) => {
+        for (let i = 0; i < array.length; i++) {
+        array[i] = callback(array[i]);
+        }
+        };
+
+        const sigmoid = (x) => {
+        return 1/(1+Math.exp(-x));
+        };
+
+
+
+        //main data handling functions
+
+        const mapMaker = (stationLocs,stationRatios,xOffset,yLeft,yRight,stationIndexLeft,stationIndexRight,color,lineClass) => {
+            modifyArray(stationRatios,x=>Math.pow(x,0.5));
+            let trackData = [];
+            let stationData = [];
+            let xLeft = stationLocs[stationIndexLeft];
+            let xRight = stationLocs[stationIndexRight];
+            let xCenter = (xLeft+xRight)/2;
+            let xScale = 6/(xRight-xCenter);
+            let yScale = yRight-yLeft;
+            var x1;
+            var x2;
+            var w1;
+            var w2;
+            var slope;
+            for (let i = 0; i <stationLocs.length -1; i++){
+                // Eventually move stationMaker into this loop
+                x1 = stationLocs[i];
+                x2 = stationLocs[i+1];
+                w1 = stationRatios[i]*pathWidthScale;
+                w2 = stationRatios[i+1]*pathWidthScale;
+                stationData.push([stationLocs[i]+xOffset, stationRatios[i]*stationScale,
+                sigmoid((x1-xCenter)*xScale)*yScale+yLeft,lineClass]);
+                let numSteps = (x2-x1)/stepSize;
+                slope = (w2-w1)/numSteps;
+                for (let j = 0; j < numSteps; j++){
+                    let xa = x1+j*stepSize-1;
+                    let xb = x1+(j+1)*stepSize+1;
+                    let ya = sigmoid((xa-xCenter)*xScale)*yScale+yLeft;
+                    let yb = sigmoid((xb-xCenter)*xScale)*yScale+yLeft;
+                    trackData.push([xa+xOffset,xb+xOffset,ya,yb,w1+j*slope,color,lineClass])
+                    };
+                };
+            let i = stationLocs.length-1;
+            x1 = stationLocs[i];
+            stationData.push([stationLocs[i]+xOffset, stationRatios[i]*stationScale,
+            sigmoid((x1-xCenter)*xScale)*yScale+yLeft,lineClass]);
+            return [stationData,trackData];
+            };
+
+        const mapUpdater = (stationLocs,stationRatios) => {
+            // should eventually pre-allocate arrays for performance
+            modifyArray(stationRatios,x=>Math.pow(x,0.5));
+            let stepSize = 1;
+            let trackScale = 50;
+            let stationScale = 20;
+            stationsR = [];
+            pathsW = [];
+            for (let i = 0; i <stationLocs.length -1; i++){
+                // Eventually move stationMaker into this loop
+                let x1 = stationLocs[i];
+                let x2 = stationLocs[i+1];
+                let w1 = stationRatios[i]*pathWidthScale;
+                let w2 = stationRatios[i+1]*pathWidthScale;
+                stationsR.push(stationRatios[i]*stationScale);
+                let numSteps = (x2-x1)/stepSize;
+                let slope = (w2-w1)/numSteps;
+                for (let j = 0; j < numSteps; j++){
+                    pathsW.push(w1+j*slope)
+                    };
+                };
+            let i = stationLocs.length-1;
+            x1 = stationLocs[i];
+            stationsR.push(stationRatios[i]*stationScale);
+            return [stationsR, pathsW];
+        };
+        
+
+
+
+
+
+
+
+
+        let selectDiv = d3.select("#redline")
+        .append("svg:svg")
+        .attr("width",4000)
+        .attr("height",1000)
+        .style("background-color", "white")
+        .style("position", "fixed");
+
+        for (let i = 0; i<starterKeys.length; i++){
+            let lineKey = starterKeys[i];
+            let stationLocs = [...liveStationData[lineKey].locations];
+            modifyArray(stationLocs, x => trackScale*x);
+            let stationRatios = [...liveStationData[lineKey].validations[timeIndex]];
+            let xOffset = liveStationData[lineKey].xOffset;
+            let yLeft = liveStationData[lineKey].yLeft;
+            let yRight = liveStationData[lineKey].yRight;
+            let lineColor = liveStationData[lineKey].color;
+
+            let [stationData,trackData] = mapMaker(stationLocs,stationRatios,xOffset,yLeft,yRight,0,1,lineColor,lineKey);
+            console.log(stationData);
+
+            selectDiv.selectAll("path."+lineKey)
+            .data(trackData)
+            .enter()
+            .append("path")
+            .attr("d", function(d){return `M ${d[0]} ${d[2]} L ${d[1]} ${d[3]}`})
+            .style("stroke-width",function(d){return d[4]})
+            .style("stroke",function(d){return d[5]})
+            .attr("class",function(d){return d[6]});
+
+            selectDiv.selectAll("circle."+lineKey)
+            .data(stationData)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d){return d[0]})
+            .attr("cy",function(d){return d[2]})
+            .attr("r",function(d){return d[1]})
+            .style("fill", "rgb(255,255,255)")
+            .style("stroke", "rgb(0,0,0")
+            .style("stroke-width", 3)
+            .on("mouseover", function(){d3.select(this).style("fill", "darkgray");})
+            .on("mouseout", function(){d3.select(this).style("fill", "white");})
+            .attr("class",function(d){return d[3]});
+
+        };
+
+       
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+
+        d3.select("#forward_button").on("click", function(){
+            console.log("click");
+            timeIndex = Math.min(timeIndex+10,numDays-1)
+            console.log(timeIndex);
+            for (let i = 0; i<starterKeys.length; i++){
+                let lineKey = starterKeys[i];
+                let stationRatios = [...liveStationData[lineKey].validations[timeIndex]];
+                let stationLocs = [...liveStationData[lineKey].locations];
+                modifyArray(stationLocs, x => trackScale*x);
+                let [stationsR, pathsW] = mapUpdater(stationLocs,stationRatios);
+                console.log(pathsW);
+
+
+                selectDiv.selectAll("path."+lineKey)
+                .data(pathsW)
+                .transition()
+                .style("stroke-width",function(d){return d});
+
+                selectDiv.selectAll("circle."+lineKey)
+                .data(stationsR)
+                .transition()
+                .attr("r",function(d){return d});
+            };
+        
+        });
+
+        d3.select("#backward_button").on("click", function(){
+            console.log("click");
+            timeIndex = Math.max(timeIndex-10,startDay)
+            console.log(timeIndex);
+          console.log(timeIndex);
+            for (let i = 0; i<starterKeys.length; i++){
+                let lineKey = starterKeys[i];
+                let stationRatios = [...liveStationData[lineKey].validations[timeIndex]];
+                let stationLocs = [...liveStationData[lineKey].locations];
+                modifyArray(stationLocs, x => trackScale*x);
+                let [stationsR, pathsW] = mapUpdater(stationLocs,stationRatios);
+                console.log(pathsW);
+
+
+                selectDiv.selectAll("path."+lineKey)
+                .data(pathsW)
+                .transition()
+                .style("stroke-width",function(d){return d});
+
+                selectDiv.selectAll("circle."+lineKey)
+                .data(stationsR)
+                .transition()
+                .attr("r",function(d){return d});
+            };
+        
+        });
+
+
+    </script>
+</body>
+</html>
