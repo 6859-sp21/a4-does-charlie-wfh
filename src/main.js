@@ -577,7 +577,7 @@ const _colors = () => (
   )
 
 function _height(width) {
-  return Math.ceil(width * screen.height / screen.width)
+  return Math.floor(0.98*width * window.innerHeight / document.body.clientWidth)
 }
 
 function _padding_between_charts(height) {
