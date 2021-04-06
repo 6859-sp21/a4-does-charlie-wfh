@@ -8,6 +8,8 @@ function _visualization(d3,width,height,margin,padding_between_charts,
 	sparklinesXAxis,incomeDataStatic,yAxisSparkLine,xScale_sparkline,sparkline_metadata,sparklineAreaMaker,sparklineMaker,sparkline_yscales,
 	validationAndIncomeData,ridership_yscales,rectsHeightScale,trackLines) {
 
+  d3.select('#a4 svg').remove();
+
   // Canvas Setup
   const svg = d3
   .select('#a4')
@@ -378,7 +380,7 @@ function _visualization(d3,width,height,margin,padding_between_charts,
   // Simple Lightbox (For static explanation)
   let currentOpacity=0;
   const lightbox = svg.append("image")
-  .attr("xlink:href","https://i.pinimg.com/originals/68/03/73/68037333171e5ca48cc5287cec92a2a5.jpg")
+  .attr("xlink:href","https://github.com/6859-sp21/a4-does-charlie-wfh/raw/main/data/level-of-abstractions.svg")
   .attr("width",width)
   .attr("height",height)
   .attr("fill","red")
@@ -395,12 +397,12 @@ function _visualization(d3,width,height,margin,padding_between_charts,
     .attr("fill", "currentColor")
     .attr("text-anchor", "start")
     .attr("alignment-baseline","text-before-edge")
-    .text("How do I read this? (draft)")
+    .text("How do I read this?")
     .attr("class","lightbox")
     .on("click", function(d) {
     currentOpacity = svg.select("image.lightbox").style("opacity")
-    svg.select("image.lightbox").transition().style("opacity", currentOpacity == 0.75 ? 0 : 0.75);
-    svg.select("text.lightbox").transition().text(currentOpacity == 0.75 ? "How do I read this? (draft)" : "Click to return")
+    svg.select("image.lightbox").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
+    svg.select("text.lightbox").transition().text(currentOpacity == 1 ? "How do I read this?" : "Click to return")
        }
      )
 
@@ -1075,7 +1077,19 @@ async function main(d3) {
   }
 
   let width = document.body.clientWidth;
-  draw(d3,covid19,employment,ridership,validationsAndIncomes,width);
+  let resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 0);
+  window.addEventListener('resize', () => {
+    const w = document.body.clientWidth;
+    if (width !== w) {
+      width = w;
+      clearTimeout(resizeId);
+      resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 10);
+    }
+  });
+
+
+  //let width = document.body.clientWidth;
+  //draw(d3,covid19,employment,ridership,validationsAndIncomes,width);
 }
 
 main(d3);
