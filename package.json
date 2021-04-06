@@ -1,0 +1,30 @@
+{
+  "name": "a4-does-charlie-wfh",
+  "version": "1.0.0",
+  "description": "Georgios Varnavides and Max L'Etoile.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6859-sp21/a4-does-charlie-wfh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/6859-sp21/a4-does-charlie-wfh/issues"
+  },
+  "homepage": "http://6859-sp21.github.io/a4-does-charlie-wfh",
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "d3": "^6.6.2",
+    "gh-pages": "^3.1.0",
+    "rollup": "^1.32.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.1"
+  }
+}
