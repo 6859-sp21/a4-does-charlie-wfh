@@ -1076,20 +1076,21 @@ async function main(d3) {
 
   }
 
+
+  // Hacky responsiveness
   let width = document.body.clientWidth;
+  let window_height = window.innerheight;
   let resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 0);
   window.addEventListener('resize', () => {
     const w = document.body.clientWidth;
-    if (width !== w) {
+    const h = window.innerheight;
+    if (width !== w || window_height != h) {
       width = w;
       clearTimeout(resizeId);
       resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 10);
     }
   });
 
-
-  //let width = document.body.clientWidth;
-  //draw(d3,covid19,employment,ridership,validationsAndIncomes,width);
 }
 
 main(d3);
