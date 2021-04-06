@@ -413,7 +413,8 @@ function _visualization(d3,width,height,margin,padding_between_charts,
 
 async function _covid19(d3) {
   return d3
-  .text('/data/COVID-City-Daily.csv')
+  //.text('/data/COVID-City-Daily.csv')
+  .text('https://gist.githubusercontent.com/gvarnavi/6b5b8fcde53e876a462c250d11c24c3e/raw/adfe76780c40954ebc57bdc7cb0596924aa833e5/COVID-City-Daily.csv')
   .then(data => d3.csvParse(data));
 }
 
@@ -434,7 +435,8 @@ function _bostonData(d3,covid19) {
 
 async function _employment(d3) {
   return d3
-  .text('/data/Employment-City-Daily.csv')
+  //.text('/data/Employment-City-Daily.csv')
+  .text('https://gist.githubusercontent.com/gvarnavi/28140b23ca089ee9bda47f22a71a0969/raw/e37c4fba3bb9d7e589639cf0238309bebd920962/Employment-City-Daily.csv')
   .then(data => d3.csvParse(data));
 }
 
@@ -459,7 +461,8 @@ function _bostonDataEmployment(d3,employment) {
 
 async function _ridership(d3) {
   return d3
-  .text('/data/mbda-gated-station-validations-by-line-seasonally-adjusted.csv')
+  //.text('/data/mbda-gated-station-validations-by-line-seasonally-adjusted.csv')
+  .text('https://gist.githubusercontent.com/gvarnavi/83ca748b46fc98a5abf34bb472e3b85a/raw/a580a887abf87f0a3f3b8fcdbd0e51f91cc61d84/mbda-gated-station-validations-by-line-seasonally-adjusted.csv')
   .then(data => d3.csvParse(data));
 }
 
@@ -489,7 +492,8 @@ function _ridershipData(allDates,ridershipFormatted){
 
 async function _validationsAndIncomes(d3) {
   return d3
-  .text('/data/tabular-station-validations-plus-income.csv')
+  //.text('/data/tabular-station-validations-plus-income.csv')
+  .text('https://gist.githubusercontent.com/gvarnavi/7b7c69f7d1b861422f3396d11f35029e/raw/1ef428845ac5a895d9826a87e6b8f2e818e4cb0b/tabular-station-validations-plus-income.csv')
   .then(data => d3.csvParse(data));
 }
 
