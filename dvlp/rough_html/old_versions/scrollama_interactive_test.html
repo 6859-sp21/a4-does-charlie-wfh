@@ -26,7 +26,7 @@
         article {
             position: relative;
             padding: 0 1rem;
-            max-width: 20rem;
+            max-width: 40rem;
         }
 
         .figure {
@@ -98,26 +98,64 @@
 
         <section id="scrolly">
             <article>
+                <div class="step" data-step="0">
+                    <p>
+                        <b>Introduction</b>
+
+                        <br />
+                        <br /> In mid-march 2020, as COVID-19 cases surged across the United States,
+                        millions of Americans lost their jobs and many of those who didn’t were suddenly
+                        ordered to begin working from home. Commutes abruptly contracted from miles in
+                        length to a few footsteps from the bedroom to the kitchen table, and as a result,
+                        public transportation traffic dropped precipitously. Ridership on buses, trains,
+                        and trolleys did not, however, fall to zero. As most of us hunkered down for the long haul,
+                        countless essential workers continued their jobs in person and kept society functioning.
+                        <br />
+                        <br />
+                        In Boston, when lockdown began, employment levels dropped by over 25%, and traffic on the 4 
+                        main subway lines, collectively known as ‘the T’ fell by around 90%. But, these headline 
+                        numbers don’t tell the full story. Not all income brackets suffered the same levels of job loss,
+                        and not all neighborhoods saw the same drop in public transit usage. What follows below is a 
+                        graphical exploration of these intertwined stories.
+                    </p>
+                </div>
                 <div class="step" data-step="1">
-                    <p>STEP 1</p>
+                    <p>
+                        Before we can understand how economic inequality manifested itself in patterns of ridership during 
+                        the pandemic, we must first determine how income varies along the various lines and branches of the T. 
+                        We start with the official MBTA map for the Boston area.
+                        <br />
+                        <br />
+                    </p>
                 </div>
                 <div class="step" data-step="2">
-                    <p>STEP 2</p>
+                    <p>
+                        For our purposes, we are only going to look at the 4 main subway lines: 
+                        the Red, Orange, Green, and Blue lines. For the majority of these stations, the MTBA releases daily gated 
+                        station validation counts—essentially the number of people who enter a station through it’s electronic gates. 
+                        The map on the right is close to what we need, but anyone who’s been to Boston knows that the lines in this map are suspiciously straight.
+                    </p>
                 </div>
                 <div class="step" data-step="3">
-                    <p>STEP 3</p>
+                    <p>In reality, the tracks of the T look more like this.</p>
                 </div>
                 <div class="step" data-step="4">
-                    <p>STEP 4</p>
+                    <p>
+                        We can take these accurate track maps and overlay them onto a map of median household income in the Boston area. 
+                        Each shaded region on this map is an official census tract.
+                    </p>
                 </div>
                 <div class="step" data-step="5" style="margin-bottom:200px">
-                    <p>STEP 5</p>
+                    <p>
+                        Finally, we keep only those census tracts through which a T-line passes, and we assign to each station the median 
+                        income of the census tract in which it is located. We are now ready to put it all together.
+                    </p>
                 </div>
             </article>
 
 
             <div class="figure" style="margin-bottom:200px">
-                <img id="svg-image1" class="abstraction-image" width="600" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 1">
+                <img id="svg-image1" class="abstraction-image" width="600" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
                 <img id="svg-image2" class="abstraction-image" width="545" src="figures/abstraction-02.svg" style="opacity: 0; margin-top:17px; margin-left:62px">
                 <img id="svg-image3" class="abstraction-image" width="485" src="figures/abstraction-03.svg" style="opacity: 0; margin-top:10px;margin-left:5px">
                 <img id="svg-image4" class="abstraction-image" width="600" src="figures/abstraction-04.svg" style="opacity: 0">
@@ -175,7 +213,7 @@
         });
 
         // update graphic based on step
-        figure.select("p").text(response.index + 1);
+        figure.select("p").text(response.index);
 
         figure.selectAll(".abstraction-image")
         .transition()
@@ -183,8 +221,8 @@
         .ease(d3.easeLinear)
         .style("opacity",0);
 
-        if (response.index<5){
-            figure.selectAll(`#svg-image${response.index +1}`)
+        if (response.index<6){
+            figure.selectAll(`#svg-image${response.index}`)
             .transition()
             .duration(500)
             .ease(d3.easeLinear)
