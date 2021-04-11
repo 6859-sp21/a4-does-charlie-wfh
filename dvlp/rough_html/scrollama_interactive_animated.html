@@ -1,0 +1,486 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Does Charlie WFH?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<link rel="stylesheet" href="../style.css" />-->
+    <style>
+        #scrolly {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            background-color: #f3f3f3;
+            padding: 1rem;
+        }
+
+            #scrolly > * {
+                -webkit-box-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+            }
+
+        article {
+            position: relative;
+            padding: 0 1rem;
+            max-width: 40rem;
+            margin-left: 10rem;
+        }
+
+        .figure {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 100%;
+            margin: 0;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            z-index: 0;
+        }
+
+        .abstraction-image {
+            position: absolute;
+            left: 2rem;
+            top: -50px;
+
+        }
+
+        .figure p {
+            text-align: center;
+            padding: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -moz-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .step {
+            margin: 0 auto 2rem auto;
+            
+        }
+
+
+            .step p {
+                text-align: left;
+                padding: 1rem;
+                font-size: 1.5rem;
+            }
+
+        :root {
+          --line-width: 36px;
+          --line-offset: -138px;
+          --dot-offset: -154px;
+        }
+
+        .vertical-red {
+            width: var(--line-width);
+            position: absolute;
+            left:var(--line-offset);
+            min-height: 100%;
+            background: red;  
+            margin:0px;  
+            float:left
+        }
+
+        .vertical-green {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + 2*var(--line-width));
+            min-height: 100%;
+            background: green;  
+            margin:0px;  
+            float:left
+        }
+
+        .vertical-blue {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + 3*var(--line-width));
+            min-height: 100%;
+            background: blue;  
+            margin:0px;  
+            float:left
+        }
+
+        .vertical-orange {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + var(--line-width));
+            min-height: 100%;
+            background: orange;  
+            margin:0px;  
+            float:left
+        }
+
+        .dot-blue {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + 3*var(--line-width));
+          z-index: 101;
+        }
+
+        .dot-green {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + 2*var(--line-width));
+          z-index: 101;
+        }
+
+        .dot-orange {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + var(--line-width));
+          z-index: 101;
+        }
+
+        .dot-red {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: var(--dot-offset);
+          z-index: 101;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <main>
+
+        <section id="intro">
+            <h1 class="intro__hed">Does Charlie WFH?</h1>
+            <p class="intro__dek">
+                Start scrolling to explore how COVID-19 impacted weekday ridership of the MBTA subway lines.
+            </p>
+        </section>
+
+        <section id="scrolly">
+            <article>
+                <div class="vertical-red"></div>
+                <div class="vertical-green"></div>
+                <div class="vertical-blue"></div>
+                <div class="vertical-orange"></div>
+                <span class="dot-blue"></span>
+                <div id="step-0" class="step" data-step="0" style="margin-bottom:200px">
+                    <p>
+                        <b>Introduction</b>
+
+                        <br />
+                        <br /> In mid-march 2020, as COVID-19 cases surged across the United States,
+                        millions of Americans lost their jobs and many of those who didn’t were suddenly
+                        ordered to begin working from home. Commutes abruptly contracted from miles in
+                        length to a few footsteps from the bedroom to the kitchen table, and as a result,
+                        public transportation traffic dropped precipitously. Ridership on buses, trains,
+                        and trolleys did not, however, fall to zero. As most of us hunkered down for the long haul,
+                        countless essential workers continued their jobs in person and kept society functioning.
+                        <br />
+                        <br />
+                        In Boston, when lockdown began, employment levels dropped by over 25%, and traffic on the 4
+                        main subway lines, collectively known as ‘the T’ fell by around 90%. But, these headline
+                        numbers don’t tell the full story. Not all income brackets suffered the same levels of job loss,
+                        and not all neighborhoods saw the same drop in public transit usage. What follows below is a
+                        graphical exploration of these intertwined stories.
+                    </p>
+                </div>
+                <span class="dot-red"></span>
+                <div id="step-1" class="step" data-step="1">
+                    <p>
+                        Before we can understand how economic inequality manifested itself in patterns of ridership during
+                        the pandemic, we must first determine how income varies along the various lines and branches of the T.
+                        We start with the official MBTA map for the Boston area.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+                <span class="dot-green"></span>
+                <div id="step-2" class="step" data-step="2">
+                    <p>
+                        For our purposes, we are only going to look at the 4 main subway lines:
+                        the Red, Orange, Green, and Blue lines. For the majority of these stations, the MTBA releases daily gated
+                        station validation counts—essentially the number of people who enter a station through it’s electronic gates.
+                        The map on the right is close to what we need, but anyone who’s been to Boston knows that the lines in this map are suspiciously straight.
+                    </p>
+                </div>
+                <span class="dot-orange"></span>
+                <div id="step-3" class="step" data-step="3">
+                    <p>In reality, the tracks of the T look more like this.</p>
+                </div>
+                <span class="dot-green"></span>
+                <div id="step-4" class="step" data-step="4">
+                    <p>
+                        We can take these accurate track maps and overlay them onto a map of median household income in the Boston area.
+                        Each shaded region on this map is an official census tract.
+                    </p>
+                </div>
+                <span class="dot-blue"></span>
+                <div id="step-5" class="step" data-step="5" style="margin-bottom:200px">
+                    <p>
+                        Finally, we keep only those census tracts through which a T-line passes, and we assign to each station the median
+                        income of the census tract in which it is located. We are now ready to put it all together.
+                    </p>
+                </div>
+            </article>
+
+
+            <div class="figure" style="margin-bottom:200px">
+                <img id="svg-image1" class="abstraction-image" width="600" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
+                <img id="svg-image2" class="abstraction-image" width="545" src="figures/abstraction-02.svg" style="opacity: 0; margin-top:17px; margin-left:62px">
+                <div id="svg-image3" class=" = abstraction-transition"></div>
+                <!--<img id="svg-image3" class="abstraction-transition" width="485" src="figures/abstraction-transition.svg" style="opacity: 0; margin-top:10px;margin-left:5px">-->
+
+
+            </div>
+        </section>
+
+        <section id="outro"></section>
+        <div id="a4" style="margin-top:300px"></div>
+        <script src="./main.min.js"></script>
+    </main>
+
+    <!-- <div class='debug'></div> -->
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/intersection-observer"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script>
+        const filepath = "figures/abstraction-transition.svg";
+
+
+
+
+        d3.xml(filepath)
+          .then(data => {
+            d3.select("#svg-image3").node().append(data.documentElement)
+          });
+
+        transitionImage = d3.select("#svg-image3").selectAll("svg");
+        console.log(transitionImage);
+
+
+
+        function pathTween(d1, precision) {
+          return function() {
+            var path0 = this,
+                path1 = path0.cloneNode(),
+                n0 = path0.getTotalLength(),
+                n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
+
+            // Uniform sampling of distance based on specified precision.
+            var distances = [0], i = 0, dt = precision / Math.max(n0, n1);
+            while ((i += dt) < 1) distances.push(i);
+            distances.push(1);
+
+            // Compute point-interpolators at each distance.
+            var points = distances.map(function(t) {
+              var p0 = path0.getPointAtLength(t * n0),
+                  p1 = path1.getPointAtLength(t * n1);
+              return d3.interpolate([p0.x, p0.y], [p1.x, p1.y]);
+            });
+
+            return function(t) {
+              return t < 1 ? "M" + points.map(function(p) { return p(t); }).join("L") : d1;
+            };
+          };
+        }
+
+
+
+
+
+
+        // using d3 for convenience
+        var main = d3.select("main");
+        var scrolly = main.select("#scrolly");
+        var figure = scrolly.select(".figure")
+        var article = scrolly.select("article");
+        var step = article.selectAll(".step");
+
+
+        console.log(transitionImage.selectAll("path"));
+
+        const paths_metadata = (
+          {
+           blue:({col:"#244995"}),
+           green_e:({col:"#bae4b3"}),
+           green_d:({col:"#74c476"}),
+           green_c:({col:"#31a354"}),
+           green_b:({col:"#006d2c"}),
+           orange:({col:"#ef7d15"}),
+           red_b:({col:"#fc9272"}),
+           red_a:({col:"#de2d26"})
+          }
+          );
+  
+          // Toggle census tracts opacity
+
+          console.log(transitionImage.select("g[id='census_tracts']"));
+          const census_tracts = transitionImage.select("g[id='census_tracts']")
+            .style("opacity", 0);
+  
+          
+
+
+  
+        
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+        // 1. update height of step elements
+        var stepH = Math.floor(window.innerHeight * 0.75);
+        step.style("height", stepH + "px");
+
+        var figureHeight = window.innerHeight / 2;
+        var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+        figure
+        .style("height", figureHeight + "px")
+        .style("top", figureMarginTop + "px");
+
+        // 3. tell scrollama to update new element dimensions
+        scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+        console.log(response);
+        // response = { element, direction, index }
+
+        // add color to current step only
+        step.classed("is-active", function(d, i) {
+        return i === response.index;
+        });
+
+        // update graphic based on step
+        figure.select("p").text(response.index);
+
+        figure.selectAll(".abstraction-image")
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        if (response.index<4){
+            figure.selectAll('.abstraction-transition')
+            .transition()
+            .duration(500)
+            .ease(d3.easeLinear)
+            .style("opacity",0);
+
+            figure.selectAll(`#svg-image${response.index}`)
+            .transition()
+            .duration(500)
+            .ease(d3.easeLinear)
+            .style("opacity",1);
+        };
+
+        if (response.index==4){
+            for (const line of Object.keys(paths_metadata)) {
+
+            // Append geographically-accurate paths to metadata object
+            // and remove from svg node
+            paths_metadata[line]['path'] = transitionImage.selectAll("#"+line)
+              .remove();
+
+            // Append map paths to metadata object
+            // and style each line according to color
+            paths_metadata[line]['path_map'] = transitionImage.selectAll("#"+line+"_map");
+            paths_metadata[line]['path_map']
+              .attr('stroke',paths_metadata[line]['col']);
+    
+            // Smoothly animate b/w two paths
+            paths_metadata[line]['path_map']
+              .transition()
+              .duration(3000)
+              .attrTween("d", pathTween(paths_metadata[line]['path'].attr("d"), 1));
+
+          };
+        
+        }
+
+
+        };
+
+
+
+        function setupStickyfill() {
+        d3.selectAll(".sticky").each(function() {
+        Stickyfill.add(this);
+        });
+        }
+
+        function init() {
+        setupStickyfill();
+
+        console.log(document.querySelector("#step-0"));
+        let elem = document.querySelector("#step-0");
+        let topRect = elem.getBoundingClientRect();
+        let xLine0 = topRect["x"];
+        let yLine0 = topRect["y"];
+
+        let stopLocs = [];
+        for (let i=0; i<6;i++){
+        let elem = document.querySelector(`#step-${i}`);
+        let rect = elem.getBoundingClientRect();
+        stopLocs.push(rect["y"]);
+        }
+        console.log(yLine0);
+        console.log(stopLocs[stopLocs.length-1]);
+        d3.select(".vertical")
+        .style("height","100%")
+        .style("left","-30px");
+
+
+
+
+        // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+        handleResize();
+
+        // 2. setup the scroller passing options
+        // 		this will also initialize trigger observations
+        // 3. bind scrollama event handlers (this can be chained like below)
+        scroller
+        .setup({
+        step: "#scrolly article .step",
+        offset: 0.5,
+        debug: false
+        })
+        .onStepEnter(handleStepEnter);
+
+        // setup resize event
+        window.addEventListener("resize", handleResize);
+        }
+
+
+
+        // kick things off
+        init();
+    </script>
+</body>
+</html>
