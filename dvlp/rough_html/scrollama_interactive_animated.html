@@ -28,6 +28,7 @@
             padding: 0 1rem;
             max-width: 40rem;
             margin-left: 10rem;
+            z-index:0;
         }
 
         .figure {
@@ -44,7 +45,15 @@
         .abstraction-image {
             position: absolute;
             left: 2rem;
-            top: -50px;
+            top: -200px;
+
+        }
+
+        
+        .abstraction-transition {
+            position: absolute;
+            left: 2rem;
+            top: -200px;
 
         }
 
@@ -75,7 +84,8 @@
             }
 
         :root {
-          --line-width: 36px;
+          --line-width: 30px;
+          --line-spacing: 36px;
           --line-offset: -138px;
           --dot-offset: -154px;
         }
@@ -87,13 +97,13 @@
             min-height: 100%;
             background: red;  
             margin:0px;  
-            float:left
+            float:left;
         }
 
         .vertical-green {
             width: var(--line-width);
             position: absolute;
-            left:calc(var(--line-offset) + 2*var(--line-width));
+            left:calc(var(--line-offset) + 2*var(--line-spacing));
             min-height: 100%;
             background: green;  
             margin:0px;  
@@ -103,7 +113,7 @@
         .vertical-blue {
             width: var(--line-width);
             position: absolute;
-            left:calc(var(--line-offset) + 3*var(--line-width));
+            left:calc(var(--line-offset) + 3*var(--line-spacing));
             min-height: 100%;
             background: blue;  
             margin:0px;  
@@ -113,7 +123,7 @@
         .vertical-orange {
             width: var(--line-width);
             position: absolute;
-            left:calc(var(--line-offset) + var(--line-width));
+            left:calc(var(--line-offset) + var(--line-spacing));
             min-height: 100%;
             background: orange;  
             margin:0px;  
@@ -127,7 +137,7 @@
           border-radius: 50%;
           display: inline-block;
           position:relative;
-          left: calc(var(--dot-offset) + 3*var(--line-width));
+          left: calc(var(--dot-offset) + 3*var(--line-spacing));
           z-index: 101;
         }
 
@@ -138,7 +148,7 @@
           border-radius: 50%;
           display: inline-block;
           position:relative;
-          left: calc(var(--dot-offset) + 2*var(--line-width));
+          left: calc(var(--dot-offset) + 2*var(--line-spacing));
           z-index: 101;
         }
 
@@ -149,7 +159,7 @@
           border-radius: 50%;
           display: inline-block;
           position:relative;
-          left: calc(var(--dot-offset) + var(--line-width));
+          left: calc(var(--dot-offset) + var(--line-spacing));
           z-index: 101;
         }
 
@@ -164,11 +174,62 @@
           z-index: 101;
         }
 
+        .endcap-red{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: red;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: var(--line-offset);
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+        .endcap-orange{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: orange;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+         .endcap-green{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: green;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + 2*var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+        .endcap-blue{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: blue;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + 3*var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+
+
+
     </style>
 </head>
 
 <body>
-    
+
     <main>
 
         <section id="intro">
@@ -181,9 +242,17 @@
         <section id="scrolly">
             <article>
                 <div class="vertical-red"></div>
+                <div class="endcap-red"></div>
+                <div class="endcap-red" style="top: 99.9%"></div>
                 <div class="vertical-green"></div>
+                <div class="endcap-green"></div>
+                <div class="endcap-green" style="top: 99.9%"></div>
                 <div class="vertical-blue"></div>
+                <div class="endcap-blue"></div>
+                <div class="endcap-blue" style="top: 99.9%"></div>
                 <div class="vertical-orange"></div>
+                <div class="endcap-orange"></div>
+                <div class="endcap-orange" style="top: 99.9%"></div>
                 <span class="dot-blue"></span>
                 <div id="step-0" class="step" data-step="0" style="margin-bottom:200px">
                     <p>
@@ -233,23 +302,16 @@
                 <div id="step-4" class="step" data-step="4">
                     <p>
                         We can take these accurate track maps and overlay them onto a map of median household income in the Boston area.
-                        Each shaded region on this map is an official census tract.
+                        Each shaded region on this map is an official census tract. We are now ready to put it all together.
                     </p>
                 </div>
-                <span class="dot-blue"></span>
-                <div id="step-5" class="step" data-step="5" style="margin-bottom:200px">
-                    <p>
-                        Finally, we keep only those census tracts through which a T-line passes, and we assign to each station the median
-                        income of the census tract in which it is located. We are now ready to put it all together.
-                    </p>
-                </div>
+
             </article>
 
 
             <div class="figure" style="margin-bottom:200px">
                 <img id="svg-image1" class="abstraction-image" width="600" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
-                <img id="svg-image2" class="abstraction-image" width="545" src="figures/abstraction-02.svg" style="opacity: 0; margin-top:17px; margin-left:62px">
-                <div id="svg-image3" class=" = abstraction-transition"></div>
+                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:20px"></div>
                 <!--<img id="svg-image3" class="abstraction-transition" width="485" src="figures/abstraction-transition.svg" style="opacity: 0; margin-top:10px;margin-left:5px">-->
 
 
@@ -257,54 +319,78 @@
         </section>
 
         <section id="outro"></section>
-        <div id="a4" style="margin-top:300px"></div>
+        <div id="a4" style="margin-top:300px; margin-bottom:0px; z-index:100;"></div>
         <script src="./main.min.js"></script>
     </main>
 
     <!-- <div class='debug'></div> -->
-    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
     <script src="https://unpkg.com/intersection-observer"></script>
     <script src="https://unpkg.com/scrollama"></script>
+    <script src="lodash.js"></script>
     <script>
         const filepath = "figures/abstraction-transition.svg";
 
+        const paths_metadata = (
+        {
+        blue:({col:"#244995"}),
+        green_e:({col:"#bae4b3"}),
+        green_d:({col:"#74c476"}),
+        green_c:({col:"#31a354"}),
+        green_b:({col:"#006d2c"}),
+        orange:({col:"#ef7d15"}),
+        red_b:({col:"#fc9272"}),
+        red_a:({col:"#de2d26"})
+        }
+        );
 
 
 
         d3.xml(filepath)
-          .then(data => {
-            d3.select("#svg-image3").node().append(data.documentElement)
-          });
+        .then(data => {
+        d3.select("#svg-image2").node().append(data.documentElement)
+        });
 
-        transitionImage = d3.select("#svg-image3").selectAll("svg");
+        transitionImage = d3.select("#svg-image2");
         console.log(transitionImage);
+
+        for (const line of Object.keys(paths_metadata)) {
+
+        // Append geographically-accurate paths to metadata object
+        // and remove from svg node
+        paths_metadata[line]['path'] = transitionImage.selectAll("#"+line)
+        .remove();
+
+
+
+        };
 
 
 
         function pathTween(d1, precision) {
-          return function() {
-            var path0 = this,
-                path1 = path0.cloneNode(),
-                n0 = path0.getTotalLength(),
-                n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
+        return function() {
+        var path0 = this,
+        path1 = path0.cloneNode(),
+        n0 = path0.getTotalLength(),
+        n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
 
-            // Uniform sampling of distance based on specified precision.
-            var distances = [0], i = 0, dt = precision / Math.max(n0, n1);
-            while ((i += dt) < 1) distances.push(i);
-            distances.push(1);
+        // Uniform sampling of distance based on specified precision.
+        var distances = [0], i = 0, dt = precision / Math.max(n0, n1);
+        while ((i += dt) < 1) distances.push(i);
+        distances.push(1);
 
-            // Compute point-interpolators at each distance.
-            var points = distances.map(function(t) {
-              var p0 = path0.getPointAtLength(t * n0),
-                  p1 = path1.getPointAtLength(t * n1);
-              return d3.interpolate([p0.x, p0.y], [p1.x, p1.y]);
-            });
+        // Compute point-interpolators at each distance.
+        var points = distances.map(function(t) {
+        var p0 = path0.getPointAtLength(t * n0),
+        p1 = path1.getPointAtLength(t * n1);
+        return d3.interpolate([p0.x, p0.y], [p1.x, p1.y]);
+        });
 
-            return function(t) {
-              return t < 1 ? "M" + points.map(function(p) { return p(t); }).join("L") : d1;
-            };
-          };
+        return function(t) {
+        return t < 1 ? "M" + points.map(function(p) { return p(t); }).join("L") : d1;
+        };
+        };
         }
 
 
@@ -318,34 +404,23 @@
         var figure = scrolly.select(".figure")
         var article = scrolly.select("article");
         var step = article.selectAll(".step");
+        var firstPass = true;
 
 
         console.log(transitionImage.selectAll("path"));
 
-        const paths_metadata = (
-          {
-           blue:({col:"#244995"}),
-           green_e:({col:"#bae4b3"}),
-           green_d:({col:"#74c476"}),
-           green_c:({col:"#31a354"}),
-           green_b:({col:"#006d2c"}),
-           orange:({col:"#ef7d15"}),
-           red_b:({col:"#fc9272"}),
-           red_a:({col:"#de2d26"})
-          }
-          );
-  
-          // Toggle census tracts opacity
-
-          console.log(transitionImage.select("g[id='census_tracts']"));
-          const census_tracts = transitionImage.select("g[id='census_tracts']")
-            .style("opacity", 0);
-  
-          
 
 
-  
-        
+        // Toggle census tracts opacity
+
+        console.log(transitionImage.select("g[id='census_tracts']"));
+
+
+
+
+
+
+
 
         // initialize the scrollama
         var scroller = scrollama();
@@ -377,6 +452,10 @@
         return i === response.index;
         });
 
+
+
+
+
         // update graphic based on step
         figure.select("p").text(response.index);
 
@@ -386,44 +465,88 @@
         .ease(d3.easeLinear)
         .style("opacity",0);
 
-        if (response.index<4){
-            figure.selectAll('.abstraction-transition')
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",0);
+        transitionImage.select("g[id='census_tracts']")
+        .transition()
+        .duration(500)
+        .style("opacity", 0);
 
-            figure.selectAll(`#svg-image${response.index}`)
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",1);
+        if (response.index<2){
+        figure.selectAll('.abstraction-transition')
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        figure.selectAll(`#svg-image${response.index}`)
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style("opacity",1);
         };
 
-        if (response.index==4){
-            for (const line of Object.keys(paths_metadata)) {
+        if (response.index==2){
+        figure.selectAll(`#svg-image${response.index}`)
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style("opacity",1);
 
+        for (const line of Object.keys(paths_metadata)) {
+        if (firstPass == true){
             // Append geographically-accurate paths to metadata object
             // and remove from svg node
             paths_metadata[line]['path'] = transitionImage.selectAll("#"+line)
-              .remove();
+            .remove();
 
-            // Append map paths to metadata object
-            // and style each line according to color
             paths_metadata[line]['path_map'] = transitionImage.selectAll("#"+line+"_map");
             paths_metadata[line]['path_map']
-              .attr('stroke',paths_metadata[line]['col']);
-    
-            // Smoothly animate b/w two paths
-            paths_metadata[line]['path_map']
-              .transition()
-              .duration(3000)
-              .attrTween("d", pathTween(paths_metadata[line]['path'].attr("d"), 1));
+            .attr('stroke',paths_metadata[line]['col']);
 
-          };
+
+            paths_metadata[line]['path_map_copy'] = _.cloneDeep(paths_metadata[line]['path_map'].attr("d"));
+            console.log(paths_metadata[line]['path_map_copy']);
+            
+        };
+
+
+        // Append map paths to metadata object
+        // and style each line according to color
+        paths_metadata[line]['path_map'] = transitionImage.selectAll("#"+line+"_map");
+        paths_metadata[line]['path_map']
+        .attr('stroke',paths_metadata[line]['col']);
         
+
+        paths_metadata[line]['path_map']
+        .transition()
+        .duration(1500)
+        .attrTween("d", pathTween(paths_metadata[line]['path_map_copy'], 1));
+        };
+        firstPass = false;
+        const census_tracts = transitionImage.select("g[id='census_tracts']")
+        .style("opacity", 0);
         }
 
+        if (response.index==3){
+        for (const line of Object.keys(paths_metadata)) {
+
+
+
+        // Smoothly animate b/w two paths
+        paths_metadata[line]['path_map']
+        .transition()
+        .duration(1500)
+        .attrTween("d", pathTween(paths_metadata[line]['path'].attr("d"), 1));
+
+        };
+
+        }
+
+        if (response.index==4){
+        transitionImage.select("g[id='census_tracts']")
+        .transition()
+        .duration(500)
+        .style("opacity", 1);
+        };
 
         };
 
@@ -445,7 +568,7 @@
         let yLine0 = topRect["y"];
 
         let stopLocs = [];
-        for (let i=0; i<6;i++){
+        for (let i=0; i<5;i++){
         let elem = document.querySelector(`#step-${i}`);
         let rect = elem.getBoundingClientRect();
         stopLocs.push(rect["y"]);
