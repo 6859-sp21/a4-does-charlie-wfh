@@ -1,14 +1,738 @@
+﻿
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Minimal HTML head elements -->
+<html>
+<head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Does Charlie WFH?</title>
-  </head>
-  <body>
-    <div id="intro-viz"></div>
-    <div id="single-highlight-viz"></div>
-    <div id="martini-glass-viz"></div>
-    <script src="./main.min.js"></script>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<link rel="stylesheet" href="../style.css" />-->
+    <style>
+        #scrolly {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            background-color: #fff;
+            padding: 1rem;
+        }
+
+            #scrolly > * {
+                -webkit-box-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+            }
+
+        article {
+            position: relative;
+            padding: 0 1rem;
+            max-width: 30rem;
+            margin-left: 10rem;
+            z-index:0;
+        }
+
+        .figure {
+            position: -webkit-sticky;
+            position: sticky;
+            width: 100%;
+            margin: 0;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            z-index: 0;
+        }
+
+        .abstraction-image {
+            position: absolute;
+            left: 2rem;
+            top: -200px;
+
+        }
+
+        
+        .abstraction-transition {
+            position: absolute;
+            left: 2rem;
+            top: -200px;
+
+        }
+
+        .intro-image {
+            position: absolute;
+            left: 2rem;
+            top: -200px;
+
+        }
+
+        .single-viz {
+            position: absolute;
+            left: 2rem;
+            top: -200px;
+
+        }
+
+        .figure p {
+            text-align: center;
+            padding: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -moz-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .step {
+            margin: 0 auto 2rem auto;
+            position: relative;
+            top: -5rem;
+            
+        }
+
+
+            .step p {
+                text-align: left;
+                padding: 1rem;
+                font-size: 1.2rem;
+            }
+
+        :root {
+          --line-width: 30px;
+          --line-spacing: 36px;
+          --line-offset: -138px;
+          --dot-offset: -154px;
+        }
+
+        .vertical-red {
+            width: var(--line-width);
+            position: absolute;
+            left:var(--line-offset);
+            min-height: 100%;
+            background: #e22224;  
+            margin:0px;  
+            float:left;
+        }
+
+        .vertical-green {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + 2*var(--line-spacing));
+            min-height: 100%;
+            background: #118342;  
+            margin:0px;  
+            float:left
+        }
+
+        .vertical-blue {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + 3*var(--line-spacing));
+            min-height: 100%;
+            background: #244995;  
+            margin:0px;  
+            float:left
+        }
+
+        .vertical-orange {
+            width: var(--line-width);
+            position: absolute;
+            left:calc(var(--line-offset) + var(--line-spacing));
+            min-height: 100%;
+            background: #ef7d15;  
+            margin:0px;  
+            float:left
+        }
+
+        .dot-blue {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + 3*var(--line-spacing));
+          z-index: 101;
+        }
+
+        .dot-green {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + 2*var(--line-spacing));
+          z-index: 101;
+        }
+
+        .dot-orange {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: calc(var(--dot-offset) + var(--line-spacing));
+          z-index: 101;
+        }
+
+        .dot-red {
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          position:relative;
+          left: var(--dot-offset);
+          z-index: 101;
+        }
+
+        .endcap-red{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #e22224;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: var(--line-offset);
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+        .endcap-orange{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #ef7d15;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+         .endcap-green{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #118342;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + 2*var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+        .endcap-blue{
+          height: var(--line-width);
+          width: var(--line-width);
+          background-color: #244995;
+          border-radius: 50%;
+          display: inline-block;
+          position:absolute;
+          left: calc(var(--line-offset) + 3*var(--line-spacing));
+          z-index: 101;
+          margin-top: -10px;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <section id="intro">
+        </section>
+
+        <section id="scrolly">
+            <article>
+                <div class="vertical-red"></div>
+                <div class="endcap-red"></div>
+                <div class="endcap-red" style="top: 99.9%"></div>
+                <div class="vertical-green"></div>
+                <div class="endcap-green"></div>
+                <div class="endcap-green" style="top: 99.9%"></div>
+                <div class="vertical-blue"></div>
+                <div class="endcap-blue"></div>
+                <div class="endcap-blue" style="top: 99.9%"></div>
+                <div class="vertical-orange"></div>
+                <div class="endcap-orange"></div>
+                <div class="endcap-orange" style="top: 99.9%"></div>
+                <span class="dot-blue"></span>
+                <div id="step-0" class="step" data-step="0" style="margin-bottom:200px">
+                    <p>
+                        <br />
+                        <br /> 
+                        <br />
+                        <br /> 
+                        <br />
+                        <br /> 
+                        <b>Does Charlie Work from Home?</b>
+
+                        <br />
+                        <br /> 
+			In mid-march 2020, as COVID-19 cases surged across the United States, 
+			millions of Americans lost their jobs and even many of those fortunate enough to keep their jobs were suddenly instructed to begin working from home. 
+			Commutes abruptly contracted in length from several miles to a few footsteps from the bedroom to the kitchen table. 
+                        <br />
+                        <br />
+                        As a result, public transportation traffic dropped precipitously. 
+			Ridership on buses, trains, and trolleys did not, however, come to a grinding halt. 
+			As most of us hunkered down for the long haul, countless essential workers continued their jobs in person and kept society functioning. 
+                        <br />
+                        <br />
+			In Boston, MA, after Gov. Baker issued a stay-at-home order on March 24th, employment levels dropped by over 25%, 
+			while traffic on the 'heavy-rail' rapid transit lines of the MBTA, collectively known was 'the T', dropped by close to 90%. 
+			Mouse-over the chart on the right to explore the effects of the pandemic on employment and MBTA ridership.
+                        <br />
+                        <br />
+			These headlines however, don't tell the full story. Not all socioeconomic strata suffered the same levels of job loss, 
+			and similarly not all neighborhoods could afford to work from home. Keep scrolling for a graphical exploration of these intertwined stories.
+                    </p>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <span class="dot-red"></span>
+                <div id="step-1" class="step" data-step="1">
+                    <p>
+                        <br />
+                        <br />
+		        In order to understand how income inequality manifested itself in patterns of MBTA ridership during the pandemic, 
+			we must first determine how income varies along the various lines and branches of the T.
+                        <br />
+                        <br />
+                        Stop 1 along our journey: The official MBTA rapid transit map, which includes information about bus, 
+			commuter rail, light-rail, and heavy-rail connections.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+                <span class="dot-green"></span>
+                <div id="step-2" class="step" data-step="2">
+                    <p>
+                        <br />
+                        <br />
+			The MBTA releases daily gated station validation counts - i.e. the number of people entering a station through its electronic turnstiles - 
+			for most of the stations on the four 'heavy-rail' rapid transit lines. 
+			These include the Red line (Ashmont/Mattapan and Braintree branches), the Orange line, the Blue line, and the four (B,C,D,E) branches of the Green line. 
+                        <br />
+                        <br />
+			The streamlined map on the right is closer to what we need to correlate income with MBTA stations, 
+			but it should come as no surprise to anyone who's ridden the T, that the straight lines on the map are in-fact geographically-distorted.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+                <span class="dot-orange"></span>
+                <div id="step-3" class="step" data-step="3">
+                    <p>
+                        <br />
+                        <br />
+			The geographically-accurate tracks look more like this, bending their way under, over, and around the area's streets, rivers, and famously, one of it's colleges. 
+			Its true form is a far cry from the tidy lines we're used to seeing on the official map - 
+			which are in turn inspired by the infamous re-design of the London Underground Tube map in 1931 by Harry Beck.
+                        <br />
+                        <br />
+			This view, however, makes it apparent exactly how far West and South the D-branch of the Green line and the Red line service respectively.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+                <span class="dot-green"></span>
+                <div id="step-4" class="step" data-step="4">
+                    <p>
+                        <br />
+                        <br />
+			Overlaying the geographically-accurate tracks onto a map of median household income in the Boston area, 
+			allows us to start identifying regions of low and high income neighborhoods along the MBTA lines.
+                        <br />
+                        <br />
+                        Each shaded region corresponds to an official census tract, with Green corresponding to higher income, and brown corresponding to lower income. 
+			Census tracts with missing median household income values are colored black.
+                        <br />
+                        <br />
+                        We are now ready to put it all together.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+
+                <span class="dot-blue"></span>
+                <div id="step-5" class="step" data-step="5">
+                    <p>
+                        <br />
+                        <br />
+			The interactive graphic on the right explores the ridership and median household income as a snapshot in time for different tracks. 
+			Take a moment to slide the time-slider and see how MBTA ridership changed during the pandemic. 
+			The vertical bars encode the seasonally-adjusted drop in ridership, with the gray bars indicating missing station data and providing a pre-pandemic baseline. 
+                        <br />
+                        <br />
+			Feel free to toggle back and from the geographically distorted and geographically accurate maps, and highlighting a different track by clicking on it.
+                        <br />
+                        <br />
+			When you are ready, keep scrolling to interact with all the tracks at once. 
+			Hover over the time-panels on the right column to interact with the visualization. 
+			If you want to inspect a particular date, press the space or enter keys to 'freeze' the animation and then click on a particular date of interest. 
+			Press the space or enter key again to recover mouse-over interaction.
+                        <br />
+                        <br />
+                    </p>
+                </div>
+
+            </article>
+
+
+            <div class="figure" style="margin-bottom:20px">
+
+                <img id="svg-image1" class="abstraction-image" width="600" src="abstraction-01.svg" style="margin-top:50px; margin-left:50px; opacity:0">
+                <div id="intro-viz" class="intro-image" style="z-index:-100; margin-top:200px"></div>
+                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:40px; opacity:0"></div>
+                <div id="single-highlight-viz" class="single-viz" style="margin-top:200px; opacity:0"></div>
+
+            </div>
+        </section>
+
+        <section id="outro"></section>
+        <div id="martini-glass-viz" style="margin-top:200px; margin-bottom:0px; z-index:100;"></div>
+        <script src="./main.min.js"></script>
+    </main>
+
+    <!-- <div class='debug'></div> -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/intersection-observer"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="lodash.js"></script>
+    
+    <script>
+        //covid_group.attr('visibility','hidden');
+        const filepath = "abstraction-transition.svg";
+        const transitionTime = 1000;
+
+        const paths_metadata = (
+        {
+        blue:({col:"#244995"}),
+        green_e:({col:"#bae4b3"}),
+        green_d:({col:"#74c476"}),
+        green_c:({col:"#31a354"}),
+        green_b:({col:"#006d2c"}),
+        orange:({col:"#ef7d15"}),
+        red_b:({col:"#fc9272"}),
+        red_a:({col:"#de2d26"})
+        }
+        );
+
+        d3.xml(filepath)
+        .then(data => {
+        d3.select("#svg-image2").node().append(data.documentElement)
+        });
+
+        transitionImage = d3.select("#svg-image2");
+        console.log(transitionImage);
+
+        for (const line of Object.keys(paths_metadata)) {
+
+        // Append geographically-accurate paths to metadata object
+        // and remove from svg node
+        paths_metadata[line]['path'] = transitionImage.selectAll("#"+line)
+        .remove();
+
+
+
+        };
+
+
+
+        function pathTween(d1, precision) {
+        return function() {
+        var path0 = this,
+        path1 = path0.cloneNode(),
+        n0 = path0.getTotalLength(),
+        n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
+
+        // Uniform sampling of distance based on specified precision.
+        var distances = [0], i = 0, dt = precision / Math.max(n0, n1);
+        while ((i += dt) < 1) distances.push(i);
+        distances.push(1);
+
+        // Compute point-interpolators at each distance.
+        var points = distances.map(function(t) {
+        var p0 = path0.getPointAtLength(t * n0),
+        p1 = path1.getPointAtLength(t * n1);
+        return d3.interpolate([p0.x, p0.y], [p1.x, p1.y]);
+        });
+
+        return function(t) {
+        return t < 1 ? "M" + points.map(function(p) { return p(t); }).join("L") : d1;
+        };
+        };
+        }
+
+
+
+
+
+
+        // using d3 for convenience
+        var main = d3.select("main");
+        var scrolly = main.select("#scrolly");
+        var figure = scrolly.select(".figure")
+        var article = scrolly.select("article");
+        var step = article.selectAll(".step");
+        var firstPass = true;
+
+
+        console.log(transitionImage.selectAll("path"));
+
+
+        // Toggle census tracts opacity
+
+        console.log(transitionImage.select("g[id='census_tracts']"));
+
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+        // 1. update height of step elements
+        var stepH = Math.floor(window.innerHeight * 0.75);
+        step.style("height", stepH + "px");
+
+        var figureHeight = window.innerHeight / 2;
+        var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+        figure
+        .style("height", figureHeight + "px")
+        .style("top", figureMarginTop + "px");
+
+        // 3. tell scrollama to update new element dimensions
+        scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+        console.log(response);
+        // response = { element, direction, index }
+
+        // add color to current step only
+        step.classed("is-active", function(d, i) {
+        return i === response.index;
+        });
+
+
+        // update graphic based on step
+        figure.select("p").text(response.index);
+
+        figure.selectAll(".abstraction-image")
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        figure.selectAll("#intro-viz")
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        figure.selectAll("#intro-viz")
+        .style("z-index",-100);
+
+        if (response.index == 0){
+            figure.selectAll("#intro-viz")
+            .transition()
+            .duration(transitionTime)
+            .ease(d3.easeLinear)
+            .style("opacity",1);
+
+            figure.selectAll("#intro-viz")
+            .style("z-index",200);
+        }
+
+        figure.selectAll("#single-highlight-viz")
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        figure.selectAll("#single-highlight-viz")
+        .style("z-index",-100);
+
+        if (response.index == 5){
+            figure.selectAll("#single-highlight-viz")
+            .transition()
+            .duration(transitionTime)
+            .ease(d3.easeLinear)
+            .style("opacity",1);
+
+            figure.selectAll("#single-highlight-viz")
+            .style("z-index",200);
+
+            figure.selectAll('.abstraction-transition')
+            .transition()
+            .duration(transitionTime)
+            .ease(d3.easeLinear)
+            .style("opacity",0);
+        }
+
+
+        transitionImage.select("g[id='census_tracts']")
+        .transition()
+        .duration(transitionTime)
+        .style("opacity", 0);
+
+        if (response.index<2){
+        figure.selectAll('.abstraction-transition')
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",0);
+
+        figure.selectAll(`#svg-image${response.index}`)
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",1);
+        };
+
+        if (response.index==2){
+        figure.selectAll(`#svg-image${response.index}`)
+        .transition()
+        .duration(transitionTime)
+        .ease(d3.easeLinear)
+        .style("opacity",1);
+
+        for (const line of Object.keys(paths_metadata)) {
+        if (firstPass == true){
+            // Append geographically-accurate paths to metadata object
+            // and remove from svg node
+            paths_metadata[line]['path'] = transitionImage.selectAll("#"+line)
+            .remove();
+
+            paths_metadata[line]['path_map'] = transitionImage.selectAll("#"+line+"_map");
+            paths_metadata[line]['path_map']
+            .attr('stroke',paths_metadata[line]['col']);
+
+
+            paths_metadata[line]['path_map_copy'] = _.cloneDeep(paths_metadata[line]['path_map'].attr("d"));
+            console.log(paths_metadata[line]['path_map_copy']);
+            
+        };
+
+
+        // Append map paths to metadata object
+        // and style each line according to color
+        paths_metadata[line]['path_map'] = transitionImage.selectAll("#"+line+"_map");
+        paths_metadata[line]['path_map']
+        .attr('stroke',paths_metadata[line]['col']);
+        
+
+        paths_metadata[line]['path_map']
+        .transition()
+        .duration(1500)
+        .attrTween("d", pathTween(paths_metadata[line]['path_map_copy'], 1));
+        };
+        firstPass = false;
+        const census_tracts = transitionImage.select("g[id='census_tracts']")
+        .style("opacity", 0);
+        }
+
+        if (response.index==3){
+        for (const line of Object.keys(paths_metadata)) {
+
+
+
+        // Smoothly animate b/w two paths
+        paths_metadata[line]['path_map']
+        .transition()
+        .duration(1500)
+        .attrTween("d", pathTween(paths_metadata[line]['path'].attr("d"), 1));
+
+        };
+
+        }
+
+        if (response.index==4){
+            transitionImage.select("g[id='census_tracts']")
+            .transition()
+            .duration(transitionTime)
+            .style("opacity", 1);
+
+            figure.selectAll('.abstraction-transition')
+            .transition()
+            .duration(transitionTime)
+            .ease(d3.easeLinear)
+            .style("opacity",1);
+        };
+
+        };
+
+
+
+        function setupStickyfill() {
+        d3.selectAll(".sticky").each(function() {
+        Stickyfill.add(this);
+        });
+        }
+
+        function init() {
+        setupStickyfill();
+
+        console.log(document.querySelector("#step-0"));
+        let elem = document.querySelector("#step-0");
+        let topRect = elem.getBoundingClientRect();
+        let xLine0 = topRect["x"];
+        let yLine0 = topRect["y"];
+
+        let stopLocs = [];
+        for (let i=0; i<5;i++){
+        let elem = document.querySelector(`#step-${i}`);
+        let rect = elem.getBoundingClientRect();
+        stopLocs.push(rect["y"]);
+        }
+        console.log(yLine0);
+        console.log(stopLocs[stopLocs.length-1]);
+        d3.select(".vertical")
+        .style("height","100%")
+        .style("left","-30px");
+
+
+
+
+        // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+        handleResize();
+
+        // 2. setup the scroller passing options
+        // 		this will also initialize trigger observations
+        // 3. bind scrollama event handlers (this can be chained like below)
+        scroller
+        .setup({
+        step: "#scrolly article .step",
+        offset: 0.5,
+        debug: false
+        })
+        .onStepEnter(handleStepEnter);
+
+        // setup resize event
+        window.addEventListener("resize", handleResize);
+        }
+
+
+
+        // kick things off
+        init();
+    </script>
+</body>
 </html>
