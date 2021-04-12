@@ -13,7 +13,7 @@
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            background-color: #f3f3f3;
+            background-color: #fff;
             padding: 1rem;
         }
 
@@ -26,7 +26,7 @@
         article {
             position: relative;
             padding: 0 1rem;
-            max-width: 40rem;
+            max-width: 30rem;
             margin-left: 10rem;
             z-index:0;
         }
@@ -73,6 +73,8 @@
 
         .step {
             margin: 0 auto 2rem auto;
+            position: relative;
+            top: -5rem;
             
         }
 
@@ -95,7 +97,7 @@
             position: absolute;
             left:var(--line-offset);
             min-height: 100%;
-            background: red;  
+            background: #e22224;  
             margin:0px;  
             float:left;
         }
@@ -105,7 +107,7 @@
             position: absolute;
             left:calc(var(--line-offset) + 2*var(--line-spacing));
             min-height: 100%;
-            background: green;  
+            background: #118342;  
             margin:0px;  
             float:left
         }
@@ -115,7 +117,7 @@
             position: absolute;
             left:calc(var(--line-offset) + 3*var(--line-spacing));
             min-height: 100%;
-            background: blue;  
+            background: #244995;  
             margin:0px;  
             float:left
         }
@@ -125,7 +127,7 @@
             position: absolute;
             left:calc(var(--line-offset) + var(--line-spacing));
             min-height: 100%;
-            background: orange;  
+            background: #ef7d15;  
             margin:0px;  
             float:left
         }
@@ -177,7 +179,7 @@
         .endcap-red{
           height: var(--line-width);
           width: var(--line-width);
-          background-color: red;
+          background-color: #e22224;
           border-radius: 50%;
           display: inline-block;
           position:absolute;
@@ -189,7 +191,7 @@
         .endcap-orange{
           height: var(--line-width);
           width: var(--line-width);
-          background-color: orange;
+          background-color: #ef7d15;
           border-radius: 50%;
           display: inline-block;
           position:absolute;
@@ -201,7 +203,7 @@
          .endcap-green{
           height: var(--line-width);
           width: var(--line-width);
-          background-color: green;
+          background-color: #118342;
           border-radius: 50%;
           display: inline-block;
           position:absolute;
@@ -213,7 +215,7 @@
         .endcap-blue{
           height: var(--line-width);
           width: var(--line-width);
-          background-color: blue;
+          background-color: #244995;
           border-radius: 50%;
           display: inline-block;
           position:absolute;
@@ -273,8 +275,15 @@
                         numbers don’t tell the full story. Not all income brackets suffered the same levels of job loss,
                         and not all neighborhoods saw the same drop in public transit usage. What follows below is a
                         graphical exploration of these intertwined stories.
+
                     </p>
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <span class="dot-red"></span>
                 <div id="step-1" class="step" data-step="1">
                     <p>
@@ -310,7 +319,7 @@
 
 
             <div class="figure" style="margin-bottom:200px">
-                <img id="svg-image1" class="abstraction-image" width="600" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
+                <img id="svg-image1" class="abstraction-image" width="750" src="figures/abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
                 <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:20px"></div>
                 <!--<img id="svg-image3" class="abstraction-transition" width="485" src="figures/abstraction-transition.svg" style="opacity: 0; margin-top:10px;margin-left:5px">-->
 

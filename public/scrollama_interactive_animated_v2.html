@@ -329,23 +329,14 @@
                     </p>
                 </div>
 
-                <span class="dot-blue"></span>
-                <div id="step-5" class="step" data-step="5">
-                    <p>
-                        Take a moment to scroll through time and click different tracks, to see how their ridership changed during COVID. When you're ready, keep scrolling to
-                        interact with all our data at once.
-                    </p>
-                </div>
-
             </article>
 
 
             <div class="figure" style="margin-bottom:200px">
-                <img id="svg-image1" class="abstraction-image" width="750" src="abstraction-01.svg#svgView(viewBox(0,0,200,200))" style="margin-top:10px; margin-left:50px">
-                <div id="intro-viz" class="intro-image" style="z-index:-100; margin-top:200px"></div>
-
-                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:40px"></div>
-                <div id="single-highlight-viz" class="single-viz" style="margin-top:200px"></div>
+                <div id="intro-viz" class="intro-image" style="z-index:100"></div>
+                <img id="svg-image1" class="abstraction-image" width="750" src="abstraction-01.svg#svgView(viewBox(0,0,4000,4800))" style="opacity: 0">
+                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:20px"></div>
+                <div id="single-highlight-viz" class="single-viz"></div>
                 <!--<img id="svg-image3" class="abstraction-transition" width="485" src="figures/abstraction-transition.svg" style="opacity: 0; margin-top:10px;margin-left:5px">-->
 
 
@@ -500,53 +491,6 @@
         .ease(d3.easeLinear)
         .style("opacity",0);
 
-        figure.selectAll("#intro-viz")
-        .transition()
-        .duration(500)
-        .ease(d3.easeLinear)
-        .style("opacity",0);
-
-        figure.selectAll("#intro-viz")
-        .style("z-index",-100);
-
-        if (response.index == 0){
-            figure.selectAll("#intro-viz")
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",1);
-
-            figure.selectAll("#intro-viz")
-            .style("z-index",200);
-        }
-
-        figure.selectAll("#single-highlight-viz")
-        .transition()
-        .duration(500)
-        .ease(d3.easeLinear)
-        .style("opacity",0);
-
-        figure.selectAll("#single-highlight-viz")
-        .style("z-index",-100);
-
-        if (response.index == 5){
-            figure.selectAll("#single-highlight-viz")
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",1);
-
-            figure.selectAll("#single-highlight-viz")
-            .style("z-index",200);
-
-            figure.selectAll('.abstraction-transition')
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",0);
-        }
-
-
         transitionImage.select("g[id='census_tracts']")
         .transition()
         .duration(500)
@@ -624,16 +568,10 @@
         }
 
         if (response.index==4){
-            transitionImage.select("g[id='census_tracts']")
-            .transition()
-            .duration(500)
-            .style("opacity", 1);
-
-            figure.selectAll('.abstraction-transition')
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
-            .style("opacity",1);
+        transitionImage.select("g[id='census_tracts']")
+        .transition()
+        .duration(500)
+        .style("opacity", 1);
         };
 
         };
