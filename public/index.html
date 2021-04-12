@@ -249,10 +249,6 @@
     <main>
 
         <section id="intro">
-            <h1 class="intro__hed">Does Charlie WFH?</h1>
-            <p class="intro__dek">
-                Start scrolling to explore how COVID-19 impacted weekday ridership of the MBTA subway lines.
-            </p>
         </section>
 
         <section id="scrolly">
@@ -341,13 +337,11 @@
 
 
             <div class="figure" style="margin-bottom:200px">
-                <img id="svg-image1" class="abstraction-image" width="750" src="abstraction-01.svg#svgView(viewBox(0,0,200,200))" style="margin-top:10px; margin-left:50px">
+
+                <img id="svg-image1" class="abstraction-image" width="750" src="abstraction-01.svg" style="margin-top:10px; margin-left:50px; opacity:0">
                 <div id="intro-viz" class="intro-image" style="z-index:-100; margin-top:200px"></div>
-
-                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:40px"></div>
-                <div id="single-highlight-viz" class="single-viz" style="margin-top:200px"></div>
-                <!--<img id="svg-image3" class="abstraction-transition" width="485" src="figures/abstraction-transition.svg" style="opacity: 0; margin-top:10px;margin-left:5px">-->
-
+                <div id="svg-image2" class=" = abstraction-transition" style="margin-left:60px; margin-top:40px; opacity:0"></div>
+                <div id="single-highlight-viz" class="single-viz" style="margin-top:200px; opacity:0"></div>
 
             </div>
         </section>
@@ -363,6 +357,7 @@
     <script src="https://unpkg.com/intersection-observer"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <script src="lodash.js"></script>
+    
     <script>
         //covid_group.attr('visibility','hidden');
         const filepath = "abstraction-transition.svg";
@@ -379,8 +374,6 @@
         red_a:({col:"#de2d26"})
         }
         );
-
-
 
         d3.xml(filepath)
         .then(data => {
@@ -445,16 +438,9 @@
         console.log(transitionImage.selectAll("path"));
 
 
-
         // Toggle census tracts opacity
 
         console.log(transitionImage.select("g[id='census_tracts']"));
-
-
-
-
-
-
 
 
         // initialize the scrollama
@@ -486,9 +472,6 @@
         step.classed("is-active", function(d, i) {
         return i === response.index;
         });
-
-
-
 
 
         // update graphic based on step
