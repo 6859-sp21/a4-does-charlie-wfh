@@ -207,7 +207,7 @@ function _intro_visualization(d3, intro_width, intro_height,allDates,bostonData,
 
 function _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,highlight_margin,pathTween,validationAndIncomeFormatted,incomeDataStatic,
 					sparklineAreaMakerHighlight,sparklineMakerHighlight,xScale_highlight,yScale_highlight,validationAndIncomeData,colors,rectsHeightScale,
-					highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height) {
+					highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height,bisectDate,ridershipData) {
   
   // Canvas Setup
   const document = (new DOMParser).parseFromString(svg_text, "image/svg+xml");
@@ -480,7 +480,7 @@ function _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,hig
   svg.selectAll(`rect.tracks-${active_line}`)
     .attr("visibility",'visible');
   
-  
+ 
   const slider_g = svg
     .append('g')
     .attr('transform', `translate(${xScale_highlight(0)+highlight_margin.left/2},${highlight_height-2*highlight_margin.bottom})`);
@@ -489,7 +489,9 @@ function _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,hig
     .call(
     slider.on('drag',function(datum) {
       
-      currentDateMBTA = datum;
+      
+      currentDate = allDates[bisectDate(ridershipData.blue,datum)];
+      currentDateMBTA = currentDate > maxStationDate ? maxStationDate : currentDate;
 
       for (const line in validationAndIncomeData) {
 
@@ -1988,6 +1990,7 @@ async function main(d3) {
     const tokenStationTimeseries = _tokenStationTimeseries(validationAndIncomeData);
     const maxStationDate = _maxStationDate(tokenStationTimeseries);
     const incomeDataStatic = _incomeDataStatic(allDates,validationAndIncomeData);
+    const bisectDate = _bisectDate(d3);
     const xScale = _xScale(d3,allDates,margin,width);
 
 
@@ -2009,7 +2012,7 @@ async function main(d3) {
     const rectsHeightScale = _rectsHeightScale(d3,height,margin);
     const single_highlight_visualization = _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,highlight_margin,pathTween,validationAndIncomeFormatted,incomeDataStatic,
                                         sparklineAreaMakerHighlight,sparklineMakerHighlight,xScale_highlight,yScale_highlight,validationAndIncomeData,colors,rectsHeightScale,
-                                        highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height);
+                                        highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height,bisectDate,ridershipData);
 
   }
 
