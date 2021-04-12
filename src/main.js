@@ -205,7 +205,340 @@ function _intro_visualization(d3, intro_width, intro_height,allDates,bostonData,
 
 }
 
-function _visualization(d3,width,height,margin,padding_between_charts,
+function _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,highlight_margin,pathTween,validationAndIncomeFormatted,incomeDataStatic,
+					sparklineAreaMakerHighlight,sparklineMakerHighlight,xScale_highlight,yScale_highlight,validationAndIncomeData,colors,rectsHeightScale,
+					highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height) {
+  
+  // Canvas Setup
+  const document = (new DOMParser).parseFromString(svg_text, "image/svg+xml");
+  d3.select("#single-highlight-viz").node().append(document.documentElement);
+  
+  const svg = d3.select('#single-highlight-viz svg');
+
+    // Make an svg tooltip to keep things contained in one div
+  const tooltip = svg.append("g");
+
+  // Define inside function to minimize global variables in translating to vanilla JS
+  let active_line = 'red_b';
+  let active_map = 'path_map_d';
+
+  let currentDate = allDates[65];
+  let currentDateMBTA  = currentDate > maxStationDate ? maxStationDate : currentDate;
+  
+  const paths_metadata = (
+  {
+   blue:({col:"#244995"}),
+   green_e:({col:"#bae4b3"}),
+   green_d:({col:"#74c476"}),
+   green_c:({col:"#31a354"}),
+   green_b:({col:"#006d2c"}),
+   orange:({col:"#ef7d15"}),
+   red_b:({col:"#fc9272"}),
+   red_a:({col:"#de2d26"})
+  }
+  );
+  
+  for (const line of Object.keys(paths_metadata)) {
+
+    // Append geographically-accurate paths to metadata object
+    // and set visibility to hidden
+    paths_metadata[line]['path_accurate'] = svg.selectAll("#"+line+"_accurate")
+      .attr('visibility','hidden');
+    
+    // Append map paths to metadata object
+    // and style each line according to color
+    paths_metadata[line]['path_map'] = svg.selectAll("#"+line+"_map")
+      .attr('stroke',"gainsboro")
+      .on("click",function(event) {
+
+      paths_metadata[active_line]['path_map']
+        .attr('stroke',"gainsboro");
+      
+      svg.selectAll(`path.sparkarea-${active_line}`)
+        .attr("visibility",'hidden');
+
+      svg.selectAll(`path.sparkline-${active_line}`)
+        .attr("visibility",'hidden');
+
+      svg.selectAll(`circle.dots-${active_line}`)
+        .attr("visibility",'hidden');
+
+      svg.selectAll(`line.trackline-${active_line}`)
+        .attr("visibility",'hidden');
+
+      svg.selectAll(`rect.tracks-${active_line}`)
+        .attr("visibility",'hidden');
+
+      d3.select(this)
+        .attr('stroke',paths_metadata[line]['col']);
+
+      active_line = line;
+      
+      svg.selectAll(`path.sparkarea-${active_line}`)
+        .attr("visibility",'visible');
+
+      svg.selectAll(`path.sparkline-${active_line}`)
+        .attr("visibility",'visible');
+
+      svg.selectAll(`circle.dots-${active_line}`)
+        .attr("visibility",'visible');
+
+      svg.selectAll(`line.trackline-${active_line}`)
+        .attr("visibility",'visible');
+
+      svg.selectAll(`rect.tracks-${active_line}`)
+        .attr("visibility",'visible');
+
+    });
+    
+    paths_metadata[line]['path_accurate_d'] = paths_metadata[line]['path_accurate'].attr('d');
+    paths_metadata[line]['path_map_d'] = paths_metadata[line]['path_map'].attr('d');
+   
+  };
+ 
+  // Add toggle div
+  svg
+    .append("text")
+    .attr("x", highlight_margin.left)
+    .attr("y", highlight_margin.top/3)
+    .attr('font-size', '16px')
+    .attr('font-weight', 'bold')
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .attr("alignment-baseline","text-before-edge")
+    .text("Toggle map")
+    .attr("class","toggle")
+    .on("click", function(d) {
+
+    if (active_map=='path_accurate_d') {
+
+      svg.selectAll("path[id$='_station']")
+        .transition()
+        .duration(3000)
+        .attr('pointer-events','all')
+        .attr("opacity", 1)
+        .attr("stroke-opacity", 1);
+
+      svg.selectAll("path[id$='_station_accurate']")
+        .transition()
+        .duration(3000)
+        .attr('pointer-events','none')
+        .attr("opacity", 0)
+        .attr("stroke-opacity", 0);
+
+      active_map = 'path_map_d';
+
+    } else {
+
+      svg.selectAll("path[id$='_station_accurate']")
+        .transition()
+        .duration(3000)
+        .attr('pointer-events','all')
+        .attr("opacity", 1)
+        .attr("stroke-opacity", 1);
+
+      svg.selectAll("path[id$='_station']")
+        .transition()
+        .duration(3000)
+        .attr('pointer-events','none')
+        .attr("opacity", 0)
+        .attr("stroke-opacity", 0);
+
+      active_map = 'path_accurate_d';
+    };
+
+    for (const line of Object.keys(paths_metadata)) {
+
+      paths_metadata[line]['path_map']
+        .transition()
+        .duration(3000)
+        .attrTween("d", pathTween(paths_metadata[line][active_map], 1));
+    };
+  });
+
+  
+  // Select stations
+  svg.selectAll("path[id*='_station']")
+    .attr('style','null')
+    .attr('fill','white')
+    .attr('stroke','black')
+    .attr('stroke-width',0.13229167)
+    .on("mouseover",function(event) {
+
+    const el = d3.select(this);
+    const {x, y, width: w, height: h} = el.node().getBBox();
+    const station_name = el.attr("id").split("_")[0]
+    const station_record = validationAndIncomeFormatted
+  .filter(d => d.station === station_name && d.date.getTime() == currentDateMBTA.getTime())[0]
+    
+    el
+    .attr("transform", 
+          `translate(${x+w/2},${y+h/2}) 
+           scale(3.5) 
+           translate(${-x-w/2},${-y-h/2})`);
+    
+    tooltip
+      .attr("transform",`translate(${d3.pointer(event,this)[0]} ${d3.pointer(event,this)[1]})`)
+      .call(callout,`${station_name}\nmedian income:${d3.format(".2s")(station_record.median_income)}\nvalidations change:${d3.format(".0%")(station_record.validation_change/100)}`);
+    
+  })
+    .on("mouseout",function(event) {
+    d3.select(this).attr('transform',null);
+    tooltip.call(callout,null);
+  });
+  
+  svg.selectAll("path[id$='_station_accurate']")
+    .attr("opacity", 0)
+    .attr("stroke-opacity", 0);
+  
+ 
+  
+
+  for (const line in incomeDataStatic) {
+
+    svg
+      .append("path")
+      .attr("class","sparkarea-"+line)
+      .attr("visibility",'hidden')
+      .attr("fill", colors[line])
+      .attr("opacity", 0.2)
+      .attr("stroke","none")
+      .attr("d", sparklineAreaMakerHighlight(incomeDataStatic[line]));
+    
+    svg  
+      .append("path")
+      .attr("class","sparkline-"+line)
+      .attr("visibility",'hidden')
+      .attr("fill", "none")
+      .attr("stroke",colors[line])
+      .attr("stroke-miterlimit", 1)
+      .attr("stroke-width", 2)
+      .attr("d", sparklineMakerHighlight(incomeDataStatic[line]));
+
+
+    svg.selectAll("dot")
+      .data(incomeDataStatic[line])
+      .join("circle")
+      .attr("class","dots-"+line)
+      .attr("visibility",'hidden')
+      .attr("r", 3)
+      .attr("fill","white")
+      .attr("stroke","black")
+      .attr("stroke-width", 1)
+      .attr("cx", d=>xScale_highlight(d.projected_x))
+      .attr("cy", d=>yScale_highlight(d.median_income));
+    
+
+    svg
+      .append("line")
+      .attr("class","trackline-"+line)
+      .attr("visibility",'hidden')
+      .attr("stroke", colors[line])
+      .attr("opacity", 0.5)
+      .attr("fill", "none")
+      .attr('stroke-linecap','round')
+      .attr("stroke-miterlimit", 1)
+      .attr("stroke-width", 5)
+      .attr('x1',xScale_highlight(0))
+      .attr('x2',xScale_highlight(d3.max(incomeDataStatic[line].map(d=>+d.projected_x))))
+      .attr('y1',yScale_highlight(315000))
+      .attr('y2',yScale_highlight(315000));
+    
+    svg
+      .selectAll("rects")
+      .data(validationAndIncomeData[line]
+            .filter(
+      d=> 
+      d.date.getTime()==currentDateMBTA.getTime()))
+      .join("rect")
+      .attr("class",`tracks-${line}`)
+      .attr("visibility",'hidden')
+      .attr("fill",d=> (d.validation_change != "0.") ? colors[line]: colors.covid_off)
+      .attr("x", d => xScale_highlight(d.projected_x)-width/300)
+      .attr("y", d=>yScale_highlight(315000)-rectsHeightScale(Math.min(+d.validation_change,0)))
+      .attr("height", d=>2*rectsHeightScale(Math.min(+d.validation_change,0)))
+      .attr("width",width/150)
+      .attr("opacity",0.5);
+
+  }
+  
+  paths_metadata[active_line]['path_map']
+    .attr('stroke',paths_metadata[active_line]['col']);
+
+  svg.selectAll(`path.sparkarea-${active_line}`)
+    .attr("visibility",'visible');
+
+  svg.selectAll(`path.sparkline-${active_line}`)
+    .attr("visibility",'visible');
+  
+  svg.selectAll(`circle.dots-${active_line}`)
+    .attr("visibility",'visible');
+
+  svg.selectAll(`line.trackline-${active_line}`)
+    .attr("visibility",'visible');
+
+  svg.selectAll(`rect.tracks-${active_line}`)
+    .attr("visibility",'visible');
+  
+  
+  const slider_g = svg
+    .append('g')
+    .attr('transform', `translate(${xScale_highlight(0)+highlight_margin.left/2},${highlight_height-2*highlight_margin.bottom})`);
+
+  slider_g
+    .call(
+    slider.on('drag',function(datum) {
+      
+      currentDateMBTA = datum;
+
+      for (const line in validationAndIncomeData) {
+
+        svg.selectAll(`rect.tracks-${line}`)
+          .data(validationAndIncomeData[line]
+                .filter(
+          d=> 
+          d.date.getTime()==currentDateMBTA.getTime()),d=>d.station)
+          .join(
+          enter  => enter,
+          update => update
+          .attr("y", d=>yScale_highlight(315000)-rectsHeightScale(Math.min(+d.validation_change,0)))
+          .attr("height", d=>2*rectsHeightScale(Math.min(+d.validation_change,0))),
+          exit => exit
+        )
+
+      };
+    }));
+
+
+  svg.append("g").call(highlight_xAxis).style("font-size","12px");
+  svg.append("g").call(highlight_yAxis).style("font-size","12px");
+  
+  svg.append("g")
+    .append("text")
+    .attr("x", xScale_highlight(0)+highlight_margin.left/3)
+    .attr("y", yScale_highlight(200000)-highlight_margin.top/3)
+    .attr('font-size', '16px')
+    .attr('font-weight', 'bold')
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .text("Median household income ($)");
+
+  svg.append("g")
+    .append("text")
+    .attr("x", xScale_highlight(0)+highlight_margin.left/3)
+    .attr("y", highlight_margin.top/3)
+    .attr('font-size', '16px')
+    .attr('font-weight', 'bold')
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .attr("alignment-baseline","text-before-edge")
+    .text("Seasonally adjusted ridership");
+
+  return svg.node();
+
+}
+
+function _martini_visualization(d3,width,height,margin,padding_between_charts,
 	allDates,maxStationDate,
 	bostonData,xScale,yScale,colors,xAxis,yAxis,scaleBandInvert,
 	bostonDataEmployment,bisectDate,employment_medata,employmentLine,yScaleEmp,xAxisEmp,yAxisEmp,
@@ -213,7 +546,7 @@ function _visualization(d3,width,height,margin,padding_between_charts,
 	sparklinesXAxis,incomeDataStatic,yAxisSparkLine,xScale_sparkline,sparkline_metadata,sparklineAreaMaker,sparklineMaker,sparkline_yscales,
 	validationAndIncomeData,ridership_yscales,rectsHeightScale,trackLines) {
 
-  d3.select('#martini-glass-viz svg').remove();
+  //d3.select('#martini-glass-viz svg').remove();
 
   // Canvas Setup
   const svg = d3
@@ -734,6 +1067,15 @@ function _incomeDataStatic(allDates,validationAndIncomeData) {
 }
 
 /*
+ * EXTERNAL SVG
+ */
+
+async function _svg_text(d3) {
+  return d3
+  .text('./individual_line_maps.svg');
+}
+
+/*
  * UTILITY FUNCTIONS
  */
 
@@ -1183,8 +1525,8 @@ function _ridership_yscales(yScaleRidership,height,margin) {
 }
 
 
-/* INTRO VIZ
- *
+/* 
+ * INTRO VIZ
  */
 
 const _intro_width = ()  => 750
@@ -1366,6 +1708,144 @@ function _xAxesMBTAIntro(d3,xAxisLineIntro,intro_height,intro_margin,intro_paddi
 )
 }
 
+/* 
+ * HIGHLIGHT VIZ
+ */
+
+function _pathTween(d3,d1,precision) {
+  return function() {
+    var path0 = this,
+        path1 = path0.cloneNode(),
+        n0 = path0.getTotalLength(),
+        n1 = (path1.setAttribute("d", d1), path1).getTotalLength();
+
+    // Uniform sampling of distance based on specified precision.
+    var distances = [0], i = 0, dt = precision / Math.max(n0, n1);
+    while ((i += dt) < 1) distances.push(i);
+    distances.push(1);
+
+    // Compute point-interpolators at each distance.
+    var points = distances.map(function(t) {
+      var p0 = path0.getPointAtLength(t * n0),
+          p1 = path1.getPointAtLength(t * n1);
+      return d3.interpolate([p0.x, p0.y], [p1.x, p1.y]);
+    });
+
+    return function(t) {
+      return t < 1 ? "M" + points.map(function(p) { return p(t); }).join("L") : d1;
+    };
+  };
+}
+
+function _callout() {
+  return (g, value) => {
+  
+  if (!value) return g.style("display", "none");
+
+  g
+      .style("display", null)
+      .style("pointer-events", "none")
+      .style("font", "14px sans-serif");
+
+  const path = g.selectAll("path")
+    .data([null])
+    .join("path")
+      .attr("fill", "white")
+      .attr("stroke", "black");
+
+  const text = g.selectAll("text")
+    .data([null])
+    .join("text")
+    .call(text => text
+      .selectAll("tspan")
+      .data((value + "").split(/\n/))
+      .join("tspan")
+        .attr("x", 0)
+        .attr("y", (d, i) => `${i * 1.1}em`)
+        .style("font-weight", (_, i) => i ? null : "bold")
+        .text(d => d));
+
+  const {x, y, width: w, height: h} = text.node().getBBox();
+
+  text.attr("transform", `translate(${-w / 2},${15 - y})`);
+  path.attr("d", `M${-w / 2 - 10},5H-5l5,-5l5,5H${w / 2 + 10}v${h + 20}h-${w + 20}z`);
+  
+}
+}
+
+function _slider(d3,allDates,xScale) {
+return sliderBottom()
+.min(d3.min(allDates))
+.max(d3.max(allDates))
+.step(1000 * 60 * 60 * 24)
+.width(250)
+.tickFormat(d3.timeFormat("%b %y"))
+.tickValues(xScale.domain().filter(d => d.getDate() == 1 && (d.getMonth() % 2)==0))
+.default(allDates[65])
+}
+
+const _highlight_width = () => 750
+const _highlight_height = () => 500
+const _svg_width = () => 400
+const _highlight_margin = () => ({left:25,right:25,top:25,bottom:25})
+
+function _xScale_highlight(d3,incomeDataStatic,svg_width,highlight_margin,highlight_width) {
+  return d3.scaleLinear()
+  .domain([0,d3.max(incomeDataStatic.red_b.map(d=>+d.projected_x))])
+  .range([svg_width+highlight_margin.left*2, highlight_width-highlight_margin.right])
+}
+
+function _highlight_xAxis(d3,highlight_height,highlight_margin,xScale_highlight,svg_width,highlight_width) {
+  return g => g
+.attr("transform", `translate(0,${1/5*(4*highlight_height - 4*highlight_margin.bottom + 
+                                       highlight_margin.top)})`)
+.call(
+  d3.axisBottom(xScale_highlight)
+  .tickValues(d3.range(0,16.05,3).map(d=>d*0.185))
+  .tickFormat(d=>d3.format(".2")(d/0.185))
+  .tickSizeOuter(0))
+.call(g => g.append("text")
+      .attr("x", 1/2*(2*highlight_margin.left-highlight_margin.right + highlight_width + svg_width))
+      .attr("y", highlight_margin.bottom*3/2)
+      .attr('font-size', '16px')
+      .attr('font-weight', 'bold')
+      .attr("fill", "currentColor")
+      .attr("text-anchor", "middle")
+      .text("Distance (mi)")
+     )
+}
+
+function _yScale_highlight(d3,highlight_height,highlight_margin) {
+  return d3.scaleLinear()
+  .domain([0,200000])
+  .range([1/5*(4*highlight_height - 4*highlight_margin.bottom + 
+   highlight_margin.top),1/5*(2*highlight_height - 2*highlight_margin.bottom + 
+   3*highlight_margin.top)])
+}
+
+function _highlight_yAxis(d3,svg_width,highlight_margin,yScale_highlight) {
+  return g => g
+.attr("transform", `translate(${svg_width+highlight_margin.left*2},0)`)
+.call(d3.axisLeft(yScale_highlight)
+      .tickValues([0,50000,100000,150000])
+      .tickFormat(d3.format("~s")))
+}
+
+function _sparklineMakerHighlight(d3,xScale_highlight,yScale_highlight) {
+  return d3.line()
+  .x(d => xScale_highlight(d.projected_x))
+  .y(d => yScale_highlight(d.median_income))
+  .curve(d3.curveStep)
+}
+
+function _sparklineAreaMakerHighlight(d3,xScale_highlight,yScale_highlight) {
+  return d3.area()
+  .x(d => xScale_highlight(d.projected_x))
+  .y1(d => yScale_highlight(d.median_income))
+  .y0(d => yScale_highlight(0.))
+  .curve(d3.curveStep)
+}
+
 /*
  * DATA FLOW
  */
@@ -1376,6 +1856,7 @@ async function main(d3) {
   const employment = await _employment(d3)
   const ridership  = await _ridership(d3)
   const validationsAndIncomes = await _validationsAndIncomes(d3)
+  const svg_text = await _svg_text(d3);
 
   function draw_martini(d3,covid19,employment,ridership,validationsAndIncomes,width) {
 
@@ -1386,7 +1867,6 @@ async function main(d3) {
     const employment_medata = _employment_medata();
     const height = _height(width);
     const padding_between_charts = _padding_between_charts(height);
-
 
     const bostonData = _bostonData(d3,covid19);
     const bostonDataEmployment = _bostonDataEmployment(d3,employment);
@@ -1435,7 +1915,7 @@ async function main(d3) {
     function yScaleRidership(offsets)  { return _yScaleRidership(d3,offsets)};
     const ridership_yscales = _ridership_yscales(yScaleRidership,height,margin);
 
-    const visualization = _visualization(d3,width,height,margin,padding_between_charts,
+    const martini_visualization = _martini_visualization(d3,width,height,margin,padding_between_charts,
         allDates,maxStationDate,
         bostonData,xScale,yScale,colors,xAxis,yAxis,scaleBandInvert,
         bostonDataEmployment,bisectDate,employment_medata,employmentLine,yScaleEmp,xAxisEmp,yAxisEmp,
@@ -1449,7 +1929,6 @@ async function main(d3) {
 
     const colors = _colors();
     const employment_medata = _employment_medata();
-    const height = _height(width);
 
     const bostonData = _bostonData(d3,covid19);
     const bostonDataEmployment = _bostonDataEmployment(d3,employment);
@@ -1483,6 +1962,7 @@ async function main(d3) {
     const yAxesMBTAIntro = _yAxesMBTAIntro(d3, yAxisLineIntro, yScalesMBTAIntro, intro_margin, intro_height, intro_padding_between_charts);
     function xAxisLineIntro(offset) { return _xAxisLineIntro(d3,xScaleIntro,offset)};
     const xAxesMBTAIntro =  _xAxesMBTAIntro(d3,xAxisLineIntro,intro_height,intro_margin,intro_padding_between_charts,xScaleIntro);
+    
 
     const intro_visualization = _intro_visualization(d3, intro_width, intro_height,allDates,bostonData,xScaleIntro,yScaleIntro,colors,xAxisIntro,yAxisIntro,
                                 intro_padding_between_charts,bostonDataEmployment,intro_margin,bisectDate,employment_medata,employmentLineIntro,yScaleEmpIntro,
@@ -1491,13 +1971,55 @@ async function main(d3) {
   }
 
 
-  // Hacky responsiveness
+  function draw_single_highlight(d3,svg_text,width){
+    
+    const height = _height(width);
+    const margin = _margin();
+    const colors = _colors();
+    const employment_medata = _employment_medata();
+
+    const bostonData = _bostonData(d3,covid19);
+    const bostonDataEmployment = _bostonDataEmployment(d3,employment);
+    const allDates = _allDates(bostonDataEmployment,bostonData);
+    const ridershipFormatted = _ridershipFormatted(d3,ridership);
+    const ridershipData = _ridershipData(allDates,ridershipFormatted);
+    const validationAndIncomeFormatted = _validationAndIncomeFormatted(d3,validationsAndIncomes);
+    const validationAndIncomeData = _validationAndIncomeData(allDates,validationAndIncomeFormatted);
+    const tokenStationTimeseries = _tokenStationTimeseries(validationAndIncomeData);
+    const maxStationDate = _maxStationDate(tokenStationTimeseries);
+    const incomeDataStatic = _incomeDataStatic(allDates,validationAndIncomeData);
+    const xScale = _xScale(d3,allDates,margin,width);
+
+
+    const highlight_width = _highlight_width();
+    const highlight_height = _highlight_height();
+    const svg_width = _svg_width();
+    const highlight_margin = _highlight_margin();
+
+    function pathTween(d1,precision) { return _pathTween(d3,d1,precision)};
+    const callout = _callout();
+    const slider = _slider(d3,allDates,xScale);
+    const xScale_highlight = _xScale_highlight(d3,incomeDataStatic,svg_width,highlight_margin,highlight_width);
+    const highlight_xAxis = _highlight_xAxis(d3,highlight_height,highlight_margin,xScale_highlight,svg_width,highlight_width);
+    const yScale_highlight = _yScale_highlight(d3,highlight_height,highlight_margin);
+    const highlight_yAxis = _highlight_yAxis(d3,svg_width,highlight_margin,yScale_highlight);
+    const sparklineMakerHighlight = _sparklineMakerHighlight(d3,xScale_highlight,yScale_highlight);
+    const sparklineAreaMakerHighlight = _sparklineAreaMakerHighlight(d3,xScale_highlight,yScale_highlight);
+
+    const rectsHeightScale = _rectsHeightScale(d3,height,margin);
+    const single_highlight_visualization = _single_highlight_visualization(d3,svg_text,allDates,maxStationDate,highlight_margin,pathTween,validationAndIncomeFormatted,incomeDataStatic,
+                                        sparklineAreaMakerHighlight,sparklineMakerHighlight,xScale_highlight,yScale_highlight,validationAndIncomeData,colors,rectsHeightScale,
+                                        highlight_xAxis,highlight_yAxis,slider,callout,width,highlight_height);
+
+  }
+
   let width = document.body.clientWidth;
   let window_height = window.innerheight;
+
   draw_martini(d3,covid19,employment,ridership,validationsAndIncomes,width);
   draw_intro(d3,covid19,employment,ridership);
+  draw_single_highlight(d3,svg_text,width);
   
-
 }
 
 main(d3);
