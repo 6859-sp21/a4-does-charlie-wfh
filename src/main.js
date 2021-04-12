@@ -1,4 +1,209 @@
 import * as d3 from 'd3';
+import { sliderBottom } from 'd3-simple-slider';
+
+function _intro_visualization(d3, intro_width, intro_height,allDates,bostonData,xScaleIntro,yScaleIntro,colors,xAxisIntro,yAxisIntro,
+				intro_padding_between_charts,bostonDataEmployment,intro_margin,bisectDate,employment_medata,employmentLineIntro,yScaleEmpIntro,
+				xAxisEmpIntro,yAxisEmpIntro,ridershipData,xAxesMBTAIntro,ridershipLineIntro,yScalesMBTAIntro,yAxesMBTAIntro,scaleBandInvert,maxStationDate) {
+
+  // Canvas Setup
+  const svg = d3
+  .select('#intro-viz')
+  .append('svg')
+  .attr('width', intro_width)
+  .attr('height', intro_height)
+  .attr('viewBox', [0,0,intro_width,intro_height]);
+
+  // White Background (For fullscreen view)
+  const background = svg.append("rect")
+  .attr("width",intro_width)
+  .attr("height",intro_height)
+  .attr("fill","white")
+ 
+  let currentDate = allDates[65];
+  let currentDateMBTA  = currentDate > maxStationDate ? maxStationDate : currentDate;
+  
+  /*
+  COVID-19 New Cases Rate Panel
+  */
+  
+  const covid_group = svg.append("g");
+  
+  // Join covid data to bars 
+  covid_group
+  .selectAll("rect")
+  .data(bostonData)
+  .join("rect")
+  .attr("class","covid-bars")
+  .attr("x",d=>xScaleIntro(d.date))
+  .attr("y",d=>yScaleIntro(d.new_case_rate))
+  .attr("fill",colors.covid_off)
+  .attr("height",d=>yScaleIntro(0)-yScaleIntro(d.new_case_rate))
+  .attr("width",xScaleIntro.bandwidth())
+  .attr("date",d=>d.date);
+
+  // Color elapsed time bars with different color
+  covid_group.selectAll("rect.covid-bars")
+    .filter(d => xScaleIntro(d.date) <= xScaleIntro(currentDate))
+    .attr("fill",colors.covid_on);
+    
+  // Add covid axes
+  covid_group.append("g").call(xAxisIntro).style("font-size","12px");
+  covid_group.append("g").call(yAxisIntro).style("font-size","12px");
+  
+  /*
+  Employment Change Panel
+  */
+ 
+  const employment_group = svg.append("g");
+  
+  // Fix employment level label positions
+  let employmentLength = bostonDataEmployment.length;
+  let labelsXPosition  = xScaleIntro(bostonDataEmployment[employmentLength-1].date)+intro_margin.left/2;
+  
+  // Time-bisect to find nearest available employment date
+  let currentXIndex    = Math.min(bisectDate(bostonDataEmployment,currentDate),employmentLength-1);
+  let currentXPosition = xScaleIntro(bostonDataEmployment[currentXIndex].date)
+    
+  // Add vertical dashed date tracker
+  employment_group.append("line")
+    .attr('class','epilog-emp')
+    .attr("style", "stroke:#999; stroke-width:0.5; stroke-dasharray: 5 3;")
+    .attr("y1",1/3*(-intro_padding_between_charts + 2*intro_height - 2*intro_margin.bottom + intro_margin.top))
+    .attr("y2", 1/3*(intro_padding_between_charts + intro_height - intro_margin.bottom + 2*intro_margin.top))
+    .attr("x1", currentXPosition)
+    .attr("x2", currentXPosition); 
+  
+  // loop over employment levels
+  for (const employmentLevel in employment_medata){
+    
+    // Employment paths
+    employment_group.append("path")
+      .attr("fill", "none")
+      .attr("stroke",colors[employmentLevel])
+      .attr("stroke-miterlimit", 1)
+      .attr("stroke-width", 2)
+      .attr("d", employmentLineIntro(employmentLevel)(bostonDataEmployment));
+    
+    // Employment labels
+    employment_group.append('text')
+      .attr('x',labelsXPosition)
+      .attr('y',yScaleEmpIntro(bostonDataEmployment[employmentLength-1][employmentLevel]))
+      .attr('font-size', '14px')
+      .text(employment_medata[employmentLevel].label);
+    
+    // Tooltips
+    employment_group.append('circle')
+      .attr('class',employmentLevel)
+      .attr('cx',currentXPosition)
+      .attr('cy',yScaleEmpIntro(bostonDataEmployment[currentXIndex][employmentLevel]))
+      .attr('r',5)
+      .attr('fill',colors[employmentLevel]);
+  }
+  // Add employment axes
+  employment_group.append("g").call(xAxisEmpIntro).style("font-size","12px");
+  employment_group.append("g").call(yAxisEmpIntro).style("font-size","12px");
+
+  /*
+  Ridership Change Panel
+  */
+  
+  const ridership_group = svg.append("g");
+  
+  // Time-bisect to find nearest available ridership date
+  let ridershipLength       = ridershipData.blue.length;
+  let currentXIndexLines    = Math.min(bisectDate(ridershipData.blue,currentDate),ridershipLength-1);
+  let currentXPositionLines = xScaleIntro(ridershipData.blue[currentXIndexLines].date)
+ 
+  // Add vertical dashed date tracker
+  ridership_group.append("line")
+    .attr('class','epilog-lines')
+    .attr("style", "stroke:#999; stroke-width:0.5; stroke-dasharray: 5 3;")
+    .attr("y1",1/3*(2*intro_height - 2*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts))
+    .attr("y2", intro_height-intro_margin.bottom)
+    .attr("x1", currentXPositionLines)
+    .attr("x2", currentXPositionLines);
+  
+  // Loop over MBTA lines
+  for (const line in xAxesMBTAIntro) {
+    
+    //Draw path
+    ridership_group.append("path")
+      .attr("fill", "none")
+      .attr("stroke",colors[line])
+      .attr("stroke-miterlimit", 1)
+      .attr("stroke-width", 2)
+      .attr("d", ridershipLineIntro(yScalesMBTAIntro[line])(ridershipData[line]));
+
+    //Add tooltip
+    ridership_group.append('circle')
+      .attr('class',line)
+      .attr('cx',currentXPositionLines)
+      .attr('cy',yScalesMBTAIntro[line](ridershipData[line][currentXIndexLines].ridership))
+      .attr('r',5)
+      .attr('fill',colors[line]);
+    
+    // Add axes
+    ridership_group.append("g").call(xAxesMBTAIntro[line]).style("font-size","12px");
+    ridership_group.append("g").call(yAxesMBTAIntro[line]).style("font-size","12px");
+  }
+   
+  /*
+  Mousemove interactivity
+  Need to restrict to right panel or otherwise 'pin'
+  */
+  
+  svg.on('mousemove', (event) => { 
+    // Time-bisect to find nearest available dates
+    currentDate      = scaleBandInvert(xScaleIntro)(d3.pointer(event)[0]);
+    currentDateMBTA  = currentDate > maxStationDate ? maxStationDate : currentDate;
+    currentXIndex    = Math.min(bisectDate(bostonDataEmployment,currentDate),employmentLength-1);
+    currentXPosition = xScaleIntro(bostonDataEmployment[currentXIndex].date);
+    currentXIndexLines    = Math.min(bisectDate(ridershipData.blue,currentDate),ridershipLength-1);                 
+    currentXPositionLines = xScaleIntro(ridershipData.blue[currentXIndexLines].date);
+
+    // Covid-bar charts
+    covid_group.selectAll("rect.covid-bars")
+      .filter(d => d.date <= currentDate)
+      .attr("fill",colors.covid_on);
+
+    covid_group.selectAll("rect.covid-bars")
+      .filter(d => d.date > currentDate)
+      .attr("fill",colors.covid_off);
+
+    // Dashed epilogs
+    employment_group.select('line.epilog-emp')
+      .attr("x1",currentXPosition)
+      .attr('x2',currentXPosition);
+
+    ridership_group.select('line.epilog-lines')
+      .attr("x1",currentXPositionLines)
+      .attr('x2',currentXPositionLines);
+
+    // employment tooltips
+    for (const employmentLevel in employment_medata){
+      employment_group.select(`circle.${employmentLevel}`)
+        .attr("cx",currentXPosition)
+        .attr('cy',yScaleEmpIntro(bostonDataEmployment[currentXIndex][employmentLevel]));
+    }
+
+    // MBTA tooltips
+    for (const line in xAxesMBTAIntro) {
+
+      ridership_group.select(`circle.${line}`)
+        .attr("cx",currentXPositionLines)
+        .attr('cy',yScalesMBTAIntro[line](ridershipData[line][currentXIndexLines].ridership));    
+    }
+
+  });
+  
+  //covid_group.attr('visibility','hidden');
+  //employment_group.attr('visibility','hidden');
+  //ridership_group.attr('visibility','hidden');
+
+
+  return svg.node();
+
+}
 
 function _visualization(d3,width,height,margin,padding_between_charts,
 	allDates,maxStationDate,
@@ -8,11 +213,11 @@ function _visualization(d3,width,height,margin,padding_between_charts,
 	sparklinesXAxis,incomeDataStatic,yAxisSparkLine,xScale_sparkline,sparkline_metadata,sparklineAreaMaker,sparklineMaker,sparkline_yscales,
 	validationAndIncomeData,ridership_yscales,rectsHeightScale,trackLines) {
 
-  d3.select('#a4 svg').remove();
+  d3.select('#martini-glass-viz svg').remove();
 
   // Canvas Setup
   const svg = d3
-  .select('#a4')
+  .select('#martini-glass-viz')
   .append('svg')
   .attr('width', width)
   .attr('height', height)
@@ -89,7 +294,7 @@ function _visualization(d3,width,height,margin,padding_between_charts,
     svg.append('text')
       .attr('x',labelsXPosition)
       .attr('y',yScaleEmp(bostonDataEmployment[employmentLength-1][employmentLevel]))
-      .attr('font-size', '18px')
+      .attr('font-size', '16px')
       .text(employment_medata[employmentLevel].label);
     
     // Tooltips
@@ -153,14 +358,23 @@ function _visualization(d3,width,height,margin,padding_between_charts,
   // Add axes
   svg
     .append("text")
-    .attr("x", margin.left)
-    .attr("y", margin.top/2)
-    .attr('font-size', '18px')
+    .attr("x", margin.left*3/2)
+    .attr("y", margin.top)
+    .attr('font-size', '16px')
     .attr('font-weight', 'bold')
     .attr("fill", "currentColor")
     .attr("text-anchor", "start")
-    .attr("alignment-baseline","text-before-edge")
-    .text("Median income and seasonally adjusted ridership along MBTA tracks");
+    .text("Seasonally adjusted change in ridership");
+  
+  svg
+    .append("text")
+    .attr("x", margin.left*3/2)
+    .attr("y", sparkline_yscales['red_b'](200000))
+    .attr('font-size', '16px')
+    .attr('font-weight', 'bold')
+    .attr("fill", "currentColor")
+    .attr("text-anchor", "start")
+    .text("Median household income ($)");
 
   svg.append("g").call(sparklinesXAxis).style("font-size","14px");
  
@@ -376,36 +590,6 @@ function _visualization(d3,width,height,margin,padding_between_charts,
 
   });
   
-  
-  // Simple Lightbox (For static explanation)
-  let currentOpacity=0;
-  const lightbox = svg.append("image")
-  .attr("xlink:href","https://github.com/6859-sp21/a4-does-charlie-wfh/raw/main/data/level-of-abstractions.svg")
-  .attr("width",width)
-  .attr("height",height)
-  .attr("fill","red")
-  .attr("opacity",currentOpacity)
-  .attr("class","lightbox")
-  
-  // Add axes
-  svg
-    .append("text")
-    .attr("x", margin.left)
-    .attr("y", height-margin.bottom/2)
-    .attr('font-size', '18px')
-    .attr('font-weight', 'bold')
-    .attr("fill", "currentColor")
-    .attr("text-anchor", "start")
-    .attr("alignment-baseline","text-before-edge")
-    .text("How do I read this?")
-    .attr("class","lightbox")
-    .on("click", function(d) {
-    currentOpacity = svg.select("image.lightbox").style("opacity")
-    svg.select("image.lightbox").transition().style("opacity", currentOpacity == 1 ? 0 : 1);
-    svg.select("text.lightbox").transition().text(currentOpacity == 1 ? "How do I read this?" : "Click to return")
-       }
-     )
-
   return svg.node();
 }
 
@@ -643,7 +827,7 @@ return g => g
     .call(g => g.append("text")
         .attr("x", margin.left/2)
         .attr("y", margin.top/2)
-        .attr('font-size', '18px')
+        .attr('font-size', '16px')
         .attr('font-weight', 'bold')
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
@@ -688,7 +872,7 @@ function _yAxisEmp(d3,margin,bostonDataEmployment,width,yScaleEmp,padding_betwee
     .call(g => g.append("text")
           .attr("x", margin.left/2)
           .attr("y", 1/3*(padding_between_charts + height - margin.bottom + 2*margin.top)-margin.top/2)
-          .attr('font-size', '18px')
+          .attr('font-size', '16px')
           .attr('font-weight', 'bold')
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
@@ -756,7 +940,7 @@ function _yAxesMBTA(d3,yAxisLine,yScalesMBTA,margin,width,padding_between_charts
     .call(g => g.append("text")
         .attr("x", margin.left/2)
         .attr("y", 1/3*(2*height - 2*margin.bottom + margin.top + 2*padding_between_charts)-margin.top/2)
-        .attr('font-size', '18px')
+        .attr('font-size', '16px')
         .attr('font-weight', 'bold')
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
@@ -872,7 +1056,7 @@ function _sparklinesXAxis(d3,sparkline_scale_annotation,margin,height,axis_flush
   .call(g => g.append("text")
         .attr("x", sparkline_scale_annotation(1.5))
         .attr("y", -margin.top/2)
-        .attr('font-size', '18px')
+        .attr('font-size', '16px')
         .attr('font-weight', 'bold')
         .attr("fill", "currentColor")
         .attr("text-anchor", "middle")
@@ -999,6 +1183,189 @@ function _ridership_yscales(yScaleRidership,height,margin) {
 }
 
 
+/* INTRO VIZ
+ *
+ */
+
+const _intro_width = ()  => 750
+const _intro_height = () => 500
+const _intro_margin = () => ({top: 25, right: 25, bottom: 25, left: 25})
+
+function _intro_padding_between_charts(intro_height) {
+  return Math.floor(intro_height/100)*10
+}
+
+function _xScaleIntro(d3,allDates,intro_margin,intro_width) {
+  return d3.scaleBand()
+    .domain(allDates)
+    .range([intro_margin.left, intro_width - intro_margin.right])
+    .paddingInner(0.5)
+    .paddingOuter(0)
+}
+
+function _yScaleIntro(d3,bostonData,intro_padding_between_charts,intro_height,intro_margin) {
+  return d3.scaleLinear()
+    .domain([0, d3.max(bostonData.map(d => d.new_case_rate))])
+    .range([1/3*(-2*intro_padding_between_charts + intro_height - intro_margin.bottom + 2*intro_margin.top), 
+          intro_margin.top])
+}
+
+function _xAxisIntro(d3,intro_height,intro_margin,intro_padding_between_charts,xScaleIntro) {
+  return g => g
+    .attr("transform", `translate(0,${
+          1/3*(intro_height - intro_margin.bottom + 2*intro_margin.top - 2*intro_padding_between_charts)
+          })`)
+    .call(
+      d3.axisBottom(xScaleIntro)
+       .tickFormat(d3.timeFormat("%b %y"))
+       .tickValues(xScaleIntro.domain().filter(d => d.getDate() == 1 && (d.getMonth() % 2)==0))
+       .tickSizeOuter(0))
+}
+
+function _yAxisIntro(d3,yScaleIntro,intro_margin,bostonData) {
+  return g => g
+    .attr("transform", `translate(${intro_margin.left},0)`)
+    .call(d3.axisLeft(yScaleIntro).ticks(null, bostonData.format))
+    .call(g => g.append("text")
+        .attr("x", intro_margin.left/2)
+        .attr("y", intro_margin.top/2)
+        .attr('font-size', '14px')
+        .attr('font-weight', 'bold')
+        .attr("fill", "currentColor")
+        .attr("text-anchor", "start")
+        .attr("alignment-baseline","text-before-edge")
+        .text("New covid cases in Boston per 100,000 people")
+        )
+}
+
+function _xAxisEmpIntro(d3,intro_padding_between_charts,intro_height,intro_margin,xScaleIntro) {
+  return g => g
+    .attr("transform", `translate(0,${
+          1/3*(-intro_padding_between_charts + 2*intro_height - 2*intro_margin.bottom +intro_margin.top)})`)
+    .call(
+      d3.axisBottom(xScaleIntro)
+       .tickFormat(d3.timeFormat("%b %y"))
+       .tickValues(xScaleIntro.domain().filter(d => d.getDate() == 1 && (d.getMonth() % 2)==0))
+       .tickSizeOuter(0))
+}
+
+function _yScaleEmpIntro(d3,bostonDataEmployment,intro_padding_between_charts,intro_height,intro_margin) {
+  return d3.scaleLinear()
+  .domain([1.1*d3.min(bostonDataEmployment.map(d=>+d.emp_low)), 
+           1.1*d3.max(bostonDataEmployment.map(d=>+d.emp_high))])
+  .range([
+    1/3*(-intro_padding_between_charts + 2*intro_height - 2*intro_margin.bottom + intro_margin.top), 
+    1/3*(intro_padding_between_charts + intro_height - intro_margin.bottom + 2*intro_margin.top)])
+}
+
+function _yAxisEmpIntro(d3,intro_margin,yScaleEmpIntro,bostonDataEmployment,intro_padding_between_charts,intro_height) {
+  return g => g
+    .attr("transform", `translate(${intro_margin.left},0)`)
+    .call(d3.axisLeft(yScaleEmpIntro).ticks(null, bostonDataEmployment.format))
+    .call(g => g.append("text")
+          .attr("x", intro_margin.left/2)
+          .attr("y", 1/3*(intro_padding_between_charts + intro_height - intro_margin.bottom + 2*intro_margin.top)-intro_margin.top/2)
+          .attr('font-size', '14px')
+          .attr('font-weight', 'bold')
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text("Seasonally adjusted change in employment (%)")
+        )
+}
+
+function _employmentLineIntro(d3,xScaleIntro,yScaleEmpIntro,field) {
+  return d3.line()
+    .x(d => xScaleIntro(d.date) + xScaleIntro.bandwidth() / 2)
+    .y(d => yScaleEmpIntro(d[field]))
+}
+
+function _ridershipLineIntro(d3,xScaleIntro,mbta_line_scale) {
+    return d3.line()
+    .x(d => xScaleIntro(d.date) + xScaleIntro.bandwidth() / 2)
+    .y(d => mbta_line_scale(d.ridership))
+}
+
+function _yScalesMBTAIntro(yScaleLine,intro_height,intro_margin,intro_padding_between_charts) {
+  return (
+  {
+    blue:yScaleLine([
+      1/4*(3*intro_height - 3*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts),
+      1/3*(2*intro_height - 2*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)
+    ]),
+    green:yScaleLine([
+      1/6*(5*intro_height - 5*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts), 
+      1/4*(3*intro_height - 3*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)
+    ]),
+    orange:yScaleLine([
+      1/12*(11*intro_height - 11*intro_margin.bottom + intro_margin.top +2*intro_padding_between_charts), 
+      1/6*(5*intro_height - 5*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)
+    ]),
+    red:yScaleLine([
+      intro_height-intro_margin.bottom, 
+      1/12*(11*intro_height - 11*intro_margin.bottom + intro_margin.top +2*intro_padding_between_charts)
+    ]),
+  }
+)
+}
+
+function _yAxisLineIntro(d3,intro_margin,lineScale) {
+    return g => g
+    .attr("transform", `translate(${intro_margin.left},0)`)
+    .call(d3.axisLeft(lineScale).tickValues([-50,0]))
+}
+
+function _yAxesMBTAIntro(d3, yAxisLineIntro, yScalesMBTAIntro, intro_margin, intro_height, intro_padding_between_charts) {
+  return (
+  {
+    blue:yAxisLineIntro(yScalesMBTAIntro.blue),
+    green:yAxisLineIntro(yScalesMBTAIntro.green),
+    orange:yAxisLineIntro(yScalesMBTAIntro.orange),
+    red: g => g
+    .attr("transform", `translate(${intro_margin.left},0)`)
+    .call(d3.axisLeft(yScalesMBTAIntro.red).tickValues([-50,0]))
+    .call(g => g.append("text")
+        .attr("x", intro_margin.left/2)
+        .attr("y", 1/3*(2*intro_height - 2*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)-intro_margin.top/2)
+        .attr('font-size', '14px')
+        .attr('font-weight', 'bold')
+        .attr("fill", "currentColor")
+        .attr("text-anchor", "start")
+        .text("Seasonally adjusted change in MBTA ridership (%)")
+        )
+  }
+)
+}
+
+function _xAxisLineIntro(d3,xScaleIntro,offset) {
+    return g => g
+    .attr("transform", `translate(0,${offset})`)
+    .call(
+      d3.axisBottom(xScaleIntro)
+       .tickFormat("")
+       .tickValues(xScaleIntro.domain().filter(d => d.getDate() == 1 && (d.getMonth() % 2)==0))
+       .tickSizeOuter(0))
+}
+
+function _xAxesMBTAIntro(d3,xAxisLineIntro,intro_height,intro_margin,intro_padding_between_charts,xScaleIntro) {
+  return (
+  {
+    blue:xAxisLineIntro(1/4*(3*intro_height - 3*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)),
+    
+    green:xAxisLineIntro(1/6*(5*intro_height - 5*intro_margin.bottom + intro_margin.top + 2*intro_padding_between_charts)),
+    
+    orange:xAxisLineIntro(1/12*(11*intro_height - 11*intro_margin.bottom + intro_margin.top +2*intro_padding_between_charts)),
+    
+    red: g => g
+    .attr("transform", `translate(0,${intro_height-intro_margin.bottom})`)
+    .call(
+      d3.axisBottom(xScaleIntro)
+       .tickFormat(d3.timeFormat("%b %y"))
+       .tickValues(xScaleIntro.domain().filter(d => d.getDate() == 1 && (d.getMonth() % 2)==0))
+       .tickSizeOuter(0))
+  }
+)
+}
+
 /*
  * DATA FLOW
  */
@@ -1010,7 +1377,9 @@ async function main(d3) {
   const ridership  = await _ridership(d3)
   const validationsAndIncomes = await _validationsAndIncomes(d3)
 
-  function draw(d3,covid19,employment,ridership,validationsAndIncomes,width) {
+  function draw_martini(d3,covid19,employment,ridership,validationsAndIncomes,width) {
+
+    // Martini glass
 
     const margin = _margin();
     const colors = _colors();
@@ -1075,21 +1444,59 @@ async function main(d3) {
         validationAndIncomeData,ridership_yscales,rectsHeightScale,trackLines);
 
   }
+  
+  function draw_intro(d3,covid19,employment,ridership) {
+
+    const colors = _colors();
+    const employment_medata = _employment_medata();
+    const height = _height(width);
+
+    const bostonData = _bostonData(d3,covid19);
+    const bostonDataEmployment = _bostonDataEmployment(d3,employment);
+    const allDates = _allDates(bostonDataEmployment,bostonData);
+    const ridershipFormatted = _ridershipFormatted(d3,ridership);
+    const ridershipData = _ridershipData(allDates,ridershipFormatted);
+    const validationAndIncomeFormatted = _validationAndIncomeFormatted(d3,validationsAndIncomes);
+    const validationAndIncomeData = _validationAndIncomeData(allDates,validationAndIncomeFormatted);
+    const tokenStationTimeseries = _tokenStationTimeseries(validationAndIncomeData);
+    const maxStationDate = _maxStationDate(tokenStationTimeseries);
+    const incomeDataStatic = _incomeDataStatic(allDates,validationAndIncomeData);
+   
+    const bisectDate = _bisectDate(d3);
+    function scaleBandInvert(scale) { return _scaleBandInvert(scale) };
+    const intro_width = _intro_width();
+    const intro_height = _intro_height();
+    const intro_margin = _intro_margin();
+    const intro_padding_between_charts = _intro_padding_between_charts(intro_height);
+    const xScaleIntro = _xScaleIntro(d3,allDates,intro_margin,intro_width);
+    const yScaleIntro = _yScaleIntro(d3,bostonData,intro_padding_between_charts,intro_height,intro_margin);
+    const xAxisIntro = _xAxisIntro(d3,intro_height,intro_margin,intro_padding_between_charts,xScaleIntro);
+    const yAxisIntro = _yAxisIntro(d3,yScaleIntro,intro_margin,bostonData);
+    const xAxisEmpIntro = _xAxisEmpIntro(d3,intro_padding_between_charts,intro_height,intro_margin,xScaleIntro);
+    const yScaleEmpIntro = _yScaleEmpIntro(d3,bostonDataEmployment,intro_padding_between_charts,intro_height,intro_margin);
+    const yAxisEmpIntro = _yAxisEmpIntro(d3,intro_margin,yScaleEmpIntro,bostonDataEmployment,intro_padding_between_charts,intro_height);
+    function employmentLineIntro(field) { return _employmentLineIntro(d3,xScaleIntro,yScaleEmpIntro,field) };
+    function ridershipLineIntro(mbta_line_scale) { return _ridershipLineIntro(d3,xScaleIntro,mbta_line_scale)};
+    function yScaleLine(offsets) { return _yScaleLine(d3,ridership,offsets)};
+    const yScalesMBTAIntro = _yScalesMBTAIntro(yScaleLine,intro_height,intro_margin,intro_padding_between_charts);
+    function yAxisLineIntro(lineScale) { return _yAxisLineIntro(d3,intro_margin,lineScale)};
+    const yAxesMBTAIntro = _yAxesMBTAIntro(d3, yAxisLineIntro, yScalesMBTAIntro, intro_margin, intro_height, intro_padding_between_charts);
+    function xAxisLineIntro(offset) { return _xAxisLineIntro(d3,xScaleIntro,offset)};
+    const xAxesMBTAIntro =  _xAxesMBTAIntro(d3,xAxisLineIntro,intro_height,intro_margin,intro_padding_between_charts,xScaleIntro);
+
+    const intro_visualization = _intro_visualization(d3, intro_width, intro_height,allDates,bostonData,xScaleIntro,yScaleIntro,colors,xAxisIntro,yAxisIntro,
+                                intro_padding_between_charts,bostonDataEmployment,intro_margin,bisectDate,employment_medata,employmentLineIntro,yScaleEmpIntro,
+                                xAxisEmpIntro,yAxisEmpIntro,ridershipData,xAxesMBTAIntro,ridershipLineIntro,yScalesMBTAIntro,yAxesMBTAIntro,scaleBandInvert,maxStationDate);
+
+  }
 
 
   // Hacky responsiveness
   let width = document.body.clientWidth;
   let window_height = window.innerheight;
-  let resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 0);
-  window.addEventListener('resize', () => {
-    const w = document.body.clientWidth;
-    const h = window.innerheight;
-    if (width !== w || window_height != h) {
-      width = w;
-      clearTimeout(resizeId);
-      resizeId = setTimeout(() => draw(d3,covid19,employment,ridership,validationsAndIncomes,width), 10);
-    }
-  });
+  draw_martini(d3,covid19,employment,ridership,validationsAndIncomes,width);
+  draw_intro(d3,covid19,employment,ridership);
+  
 
 }
 
