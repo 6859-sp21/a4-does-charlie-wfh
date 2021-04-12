@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="850"
+   height="1000"
+   viewBox="0 0 850 1000"
+   version="1.1"
+   id="svg129"
+   sodipodi:docname="geographically-distorted-map.svg"
+   inkscape:version="1.0.2 (394de47547, 2021-03-26)">
+  <metadata
+     id="metadata135">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs133" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1048"
+     id="namedview131"
+     showgrid="false"
+     scale-x="1"
+     inkscape:zoom="0.46777833"
+     inkscape:cx="422.5151"
+     inkscape:cy="432.73054"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg129" />
+  <path
+     id="green_b_map"
+     stroke="#118342"
+     d="m 29.539719,420.71807 c 11.023985,0 22.934234,-12.70766 22.934234,-12.70766 0,0 82.687037,-82.73301 90.176777,-90.22274 9.44526,-9.44525 16.95437,-9.65281 26.01296,-9.65281 9.296,0 16.04658,-0.0318 26.12033,10.04186 l 92.16245,92.16238 c 0,0 9.36734,9.98489 27.97659,9.98485 l 136.79431,-0.0392 c 15.66875,0 19.42949,-3.5005 27.85477,-11.92547 l 93.484,-93.5557 c 8.34292,-8.34292 8.34292,-21.84466 0,-30.18728 l -7.62471,-7.69297"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="green_e_map"
+     stroke="#118342"
+     d="m 255.56379,599.23789 99.07427,-99.04832 c 0,0 7.97832,-7.69774 7.97832,-17.42011 v -39.96887 -0.56399 c 0,0 0,-21.95971 24.37541,-21.95971"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="green_d_map"
+     stroke="#118342"
+     d="m 99.169334,610.46246 c 11.023986,0 22.400436,-11.95792 22.400436,-11.95792 m 0.009,0.009 169.50448,-168.87909 c 0,0 8.5623,-9.31038 20.62452,-9.31038"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="green_c_map"
+     stroke="#118342"
+     d="m 62.07049,516.41521 c 11.023965,0 22.934214,-12.70769 22.934214,-12.70769 L 198.16991,390.6068 c 5.3076,-5.8152 11.67526,-9.65267 19.61467,-9.65267 8.14779,0 13.97178,3.87582 19.61476,9.65267 l 20.6716,20.62985 c 0,0 7.80998,8.41751 19.15065,9.04958 0.44237,0.025 36.64471,0.0378 37.09759,0.0378"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="blue_map"
+     stroke="#244995"
+     d="m 820.46028,124.92358 -220.1528,220.56052 -26.35743,26.28386 -0.11533,0.12514 c -8.95309,8.95314 -17.4889,-0.15824 -17.4889,-0.15824 l 0.10405,0.087 -15.84301,-15.76998 -30.92156,-31.01289"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="orange_map"
+     stroke="#ef7d15"
+     d="m 252.99355,712.62546 293.85371,-293.86391 13.26319,-13.06778 c 4.87205,-4.87174 4.95014,-12.4274 4.95014,-12.4274 V 89.539719"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="red_a_map"
+     stroke="#e22224"
+     d="m 465.03787,801.51016 102.60227,0.007 c 2.23706,0.007 6.18363,-4.32175 6.18403,-9.03811 l -0.0622,-33.20944 -0.0142,-51.57527 c 0,0 0.1021,-13.70306 7.94251,-21.54321 0,0 18.85707,-18.5001 22.50533,-22.63672 6.5148,-6.51458 5.97933,-20.32058 5.97933,-20.32058"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     id="red_b_map"
+     stroke="#e22224"
+     d="m 741.35047,836.30528 v -35.6137 c 0,0 0.18649,-12.03372 -9.84872,-22.06853 L 627.93954,676.34152 m -7e-5,0 c 0,0 -5.60791,-5.52417 -10.52772,-13.39079 -3.84426,-6.14689 -7.26825,-13.72401 -7.26825,-21.21343 V 493.45032 c 0,0 0.12973,-9.91835 -6.81318,-16.86124 -13.42733,-13.427 -35.76655,-35.82265 -324.85956,-325.64745"
+     style="fill:none;stroke-width:9.07944;stroke-linecap:round;stroke-miterlimit:3.864" />
+  <path
+     d="m 422.55136,420.31729 c 0,-1.97442 1.60056,-3.57529 3.57528,-3.57529 1.97469,0 3.57526,1.60087 3.57526,3.57529 0,1.9747 -1.60057,3.57526 -3.57526,3.57526 -1.97472,0 -3.57528,-1.60056 -3.57528,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="arlington_station" />
+  <path
+     d="m 468.62431,418.85532 c 0,1.98086 -1.6055,3.58663 -3.58639,3.58663 -1.98089,0 -3.58666,-1.60577 -3.58666,-3.58663 0,-1.98115 1.60552,-3.58692 3.58639,-3.58692 1.98088,0 3.58666,1.60577 3.58666,3.58692"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="boylston_station" />
+  <path
+     d="m 25.964506,420.71807 c 0,-1.9747 1.600549,-3.57526 3.575591,-3.57526 1.974394,0 3.574964,1.60056 3.574964,3.57526 0,1.97442 -1.60057,3.57529 -3.574964,3.57529 -1.975042,0 -3.575591,-1.60087 -3.575591,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="boston college_station" />
+  <path
+     d="m 48.414908,408.52246 c 0,-1.9747 1.600548,-3.57526 3.575592,-3.57526 1.974394,0 3.574963,1.60056 3.574963,3.57526 0,1.97441 -1.600569,3.57529 -3.574963,3.57529 -1.975044,0 -3.575592,-1.60088 -3.575592,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="south street_station" />
+  <path
+     d="m 281.35922,408.35782 c 0,-1.97473 1.60057,-3.57529 3.5756,-3.57529 1.97441,0 3.57495,1.60056 3.57495,3.57529 0,1.97439 -1.60054,3.57526 -3.57495,3.57526 -1.97503,0 -3.5756,-1.60087 -3.5756,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="blandford street_station" />
+  <path
+     d="m 269.10535,396.03649 c 0,-1.97471 1.60056,-3.57528 3.57559,-3.57528 1.97439,0 3.57496,1.60057 3.57496,3.57528 0,1.97441 -1.60057,3.57526 -3.57496,3.57526 -1.97503,0 -3.57559,-1.60085 -3.57559,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="boston university east_station" />
+  <path
+     d="m 255.09261,382.00786 c 0,-1.97471 1.60056,-3.57497 3.57559,-3.57497 1.97439,0 3.57496,1.60026 3.57496,3.57497 0,1.97442 -1.60057,3.57527 -3.57496,3.57527 -1.97503,0 -3.57559,-1.60085 -3.57559,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="boston university central_station" />
+  <path
+     d="m 242.91806,369.87248 c 0,-1.97472 1.60057,-3.57529 3.57559,-3.57529 1.97439,0 3.57496,1.60057 3.57496,3.57529 0,1.97409 -1.60057,3.57496 -3.57496,3.57496 -1.97502,0 -3.57559,-1.60087 -3.57559,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="boston university west_station" />
+  <path
+     d="m 228.88227,355.79261 c 0,-1.97473 1.60057,-3.5753 3.5756,-3.5753 1.97439,0 3.57496,1.60057 3.57496,3.5753 0,1.97439 -1.60057,3.57526 -3.57496,3.57526 -1.97503,0 -3.5756,-1.60087 -3.5756,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path2359" />
+  <path
+     d="m 216.51031,343.50089 c 0,-1.97471 1.60057,-3.57528 3.5756,-3.57528 1.97438,0 3.57495,1.60057 3.57495,3.57528 0,1.97442 -1.60057,3.57529 -3.57495,3.57529 -1.97503,0 -3.5756,-1.60087 -3.5756,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="pleasant street_station" />
+  <path
+     d="m 202.47454,329.48828 c 0,-1.97472 1.60055,-3.57526 3.57559,-3.57526 1.9744,0 3.57497,1.60054 3.57497,3.57526 0,1.9741 -1.60057,3.57496 -3.57497,3.57496 -1.97504,0 -3.57559,-1.60086 -3.57559,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="babcock street_station" />
+  <path
+     d="m 188.60869,315.70187 c 0,-1.97472 1.60056,-3.57529 3.57558,-3.57529 1.97441,0 3.57496,1.60057 3.57496,3.57529 0,1.97409 -1.60055,3.57496 -3.57496,3.57496 -1.97502,0 -3.57558,-1.60087 -3.57558,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="packards corner_station" />
+  <path
+     d="m 141.47216,315.70132 c 0,-1.97471 1.60057,-3.57528 3.5756,-3.57528 1.97441,0 3.57496,1.60057 3.57496,3.57528 0,1.97408 -1.60055,3.57495 -3.57496,3.57495 -1.97503,0 -3.5756,-1.60087 -3.5756,-3.57495"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="griggs street_station" />
+  <path
+     d="m 127.84202,328.96517 c 0,-1.9747 1.60056,-3.57495 3.5756,-3.57495 1.9744,0 3.57495,1.60025 3.57495,3.57495 0,1.97443 -1.60055,3.57528 -3.57495,3.57528 -1.97504,0 -3.5756,-1.60085 -3.5756,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="allston street_station" />
+  <path
+     d="m 114.60539,342.22913 c 0,-1.97473 1.60055,-3.57527 3.57558,-3.57527 1.97442,0 3.57495,1.60054 3.57495,3.57527 0,1.9741 -1.60053,3.57496 -3.57495,3.57496 -1.97503,0 -3.57558,-1.60086 -3.57558,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="warren street_station" />
+  <path
+     d="m 101.36889,355.49273 c 0,-1.9747 1.60054,-3.57527 3.57559,-3.57527 1.9744,0 3.57496,1.60057 3.57496,3.57527 0,1.97441 -1.60056,3.57528 -3.57496,3.57528 -1.97505,0 -3.57559,-1.60087 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="washington street_station" />
+  <path
+     d="m 88.132376,368.75649 c 0,-1.97471 1.60057,-3.57526 3.575612,-3.57526 1.974394,0 3.574942,1.60055 3.574942,3.57526 0,1.97442 -1.600548,3.57528 -3.574942,3.57528 -1.975042,0 -3.575612,-1.60086 -3.575612,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="sutherland road_station" />
+  <path
+     d="m 74.895888,382.02071 c 0,-1.97472 1.600543,-3.5756 3.575586,-3.5756 1.974394,0 3.574963,1.60088 3.574963,3.5756 0,1.9741 -1.600569,3.57496 -3.574963,3.57496 -1.975043,0 -3.575586,-1.60086 -3.575586,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="chiswick road_station" />
+  <path
+     d="m 61.659375,395.1589 c 0,-1.97472 1.600569,-3.57529 3.575611,-3.57529 1.974394,0 3.574943,1.60057 3.574943,3.57529 0,1.97469 -1.600549,3.57526 -3.574943,3.57526 -1.975042,0 -3.575611,-1.60057 -3.575611,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="chestnut hill avenue_station" />
+  <path
+     d="m 165.07031,308.15321 c 0,-1.97409 1.60056,-3.57495 3.57527,-3.57495 1.97472,0 3.57528,1.60086 3.57528,3.57495 0,1.97473 -1.60056,3.57529 -3.57528,3.57529 -1.97471,0 -3.57527,-1.60056 -3.57527,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="harvard avenue_station" />
+  <path
+     d="m 344.71585,420.33571 c 0,-1.97439 1.60057,-3.57526 3.57529,-3.57526 1.97471,0 3.57526,1.60087 3.57526,3.57526 0,1.97472 -1.60055,3.57529 -3.57526,3.57529 -1.97472,0 -3.57529,-1.60057 -3.57529,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="hynes convention center_station" />
+  <path
+     d="m 383.75528,420.33571 c 0,-1.97439 1.60056,-3.57526 3.57527,-3.57526 1.97472,0 3.57528,1.60087 3.57528,3.57526 0,1.97472 -1.60056,3.57529 -3.57528,3.57529 -1.97471,0 -3.57527,-1.60057 -3.57527,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="copley_station" />
+  <path
+     d="m 304.3442,422.7603 c -1.36104,-1.42965 -1.30547,-3.69279 0.12446,-5.05447 1.4306,-1.3611 3.69373,-1.30547 5.05448,0.12446 1.36139,1.43 1.30547,3.69281 -0.12427,5.05418 -1.43061,1.36168 -3.69377,1.3058 -5.05482,-0.12434"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="kenmore_station" />
+  <path
+     d="m 58.434101,516.35407 c 0,-1.97472 1.600569,-3.57528 3.575585,-3.57528 1.974421,0 3.574963,1.60056 3.574963,3.57528 0,1.9744 -1.600542,3.57526 -3.574963,3.57526 -1.975016,0 -3.575585,-1.60086 -3.575585,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="cleveland circle_station" />
+  <path
+     d="m 80.884503,504.15844 c 0,-1.97469 1.600549,-3.57526 3.575585,-3.57526 1.974401,0 3.574964,1.60057 3.574964,3.57526 0,1.97443 -1.600563,3.57529 -3.574964,3.57529 -1.975036,0 -3.575585,-1.60086 -3.575585,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="englewood avenue_station" />
+  <path
+     d="m 94.9047,490.13882 c 0,-1.97472 1.600563,-3.57529 3.575613,-3.57529 1.974387,0 3.574937,1.60057 3.574937,3.57529 0,1.9744 -1.60055,3.57527 -3.574937,3.57527 -1.97505,0 -3.575613,-1.60087 -3.575613,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="dean road_station" />
+  <path
+     d="m 108.9548,476.11914 c 0,-1.97471 1.60056,-3.57527 3.57559,-3.57527 1.9744,0 3.57497,1.60056 3.57497,3.57527 0,1.97441 -1.60057,3.57528 -3.57497,3.57528 -1.97503,0 -3.57559,-1.60087 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="tappan street_station" />
+  <path
+     d="m 122.96825,462.09935 c 0,-1.97472 1.60054,-3.57527 3.57558,-3.57527 1.9744,0 3.57496,1.60055 3.57496,3.57527 0,1.9744 -1.60056,3.57528 -3.57496,3.57528 -1.97504,0 -3.57558,-1.60088 -3.57558,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="washington square_station" />
+  <path
+     d="m 137.01657,448.07969 c 0,-1.97472 1.60054,-3.57529 3.57558,-3.57529 1.9744,0 3.57496,1.60057 3.57496,3.57529 0,1.9744 -1.60056,3.57528 -3.57496,3.57528 -1.97504,0 -3.57558,-1.60088 -3.57558,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="fairbanks street_station" />
+  <path
+     d="m 150.99489,434.06021 c 0,-1.97471 1.60056,-3.57527 3.57559,-3.57527 1.97441,0 3.57496,1.60056 3.57496,3.57527 0,1.97409 -1.60055,3.57495 -3.57496,3.57495 -1.97503,0 -3.57559,-1.60086 -3.57559,-3.57495"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="brandon hall_station" />
+  <path
+     d="m 165.08504,420.04051 c 0,-1.97472 1.60056,-3.57529 3.57558,-3.57529 1.97442,0 3.57497,1.60057 3.57497,3.57529 0,1.97438 -1.60055,3.57528 -3.57497,3.57528 -1.97502,0 -3.57558,-1.6009 -3.57558,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="summit ave_station" />
+  <path
+     d="m 190.87665,394.21079 c 0,-1.97472 1.60057,-3.57529 3.57558,-3.57529 1.9744,0 3.57497,1.60057 3.57497,3.57529 0,1.97441 -1.60057,3.57527 -3.57497,3.57527 -1.97501,0 -3.57558,-1.60086 -3.57558,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="saint paul street_station" />
+  <path
+     d="m 214.20947,380.83424 c 0,-1.97471 1.60057,-3.57528 3.57559,-3.57528 1.97439,0 3.57496,1.60057 3.57496,3.57528 0,1.9741 -1.60057,3.57528 -3.57496,3.57528 -1.97502,0 -3.57559,-1.60118 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="kent street_station" />
+  <path
+     d="m 237.64691,394.13119 c 0,-1.97472 1.60057,-3.57528 3.57559,-3.57528 1.9744,0 3.57497,1.60056 3.57497,3.57528 0,1.97439 -1.60057,3.57527 -3.57497,3.57527 -1.97502,0 -3.57559,-1.60088 -3.57559,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="hawes street_station" />
+  <path
+     d="m 249.52804,406.28822 c 0,-1.9747 1.60057,-3.57496 3.57558,-3.57496 1.97443,0 3.57497,1.60026 3.57497,3.57496 0,1.97441 -1.60054,3.57528 -3.57497,3.57528 -1.97501,0 -3.57558,-1.60087 -3.57558,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="saint marys street_station" />
+  <path
+     d="m 179.24003,406.11708 c 0,-1.97441 1.60057,-3.57495 3.57528,-3.57495 1.97472,0 3.57527,1.60054 3.57527,3.57495 0,1.97471 -1.60055,3.57528 -3.57527,3.57528 -1.97471,0 -3.57528,-1.60057 -3.57528,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="coolidge corner_station" />
+  <path
+     d="m 273.42412,443.69086 c 0,-1.97472 1.60056,-3.57527 3.57559,-3.57527 1.97441,0 3.57496,1.60055 3.57496,3.57527 0,1.97441 -1.60055,3.57528 -3.57496,3.57528 -1.97503,0 -3.57559,-1.60087 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="fenway park_station" />
+  <path
+     d="m 259.17194,457.87737 c 0,-1.97472 1.60054,-3.57529 3.57558,-3.57529 1.97441,0 3.57496,1.60057 3.57496,3.57529 0,1.97439 -1.60055,3.57526 -3.57496,3.57526 -1.97504,0 -3.57558,-1.60087 -3.57558,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="longwood_station" />
+  <path
+     d="m 230.81226,486.12777 c 0,-1.9747 1.60054,-3.57527 3.57556,-3.57527 1.97442,0 3.57498,1.60057 3.57498,3.57527 0,1.97441 -1.60056,3.57528 -3.57498,3.57528 -1.97502,0 -3.57556,-1.60087 -3.57556,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="brookline hills_station" />
+  <path
+     d="m 216.7196,500.19245 c 0,-1.97472 1.60057,-3.57529 3.57558,-3.57529 1.97441,0 3.57497,1.60057 3.57497,3.57529 0,1.97439 -1.60056,3.57528 -3.57497,3.57528 -1.97501,0 -3.57558,-1.60089 -3.57558,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="beaconsfield_station" />
+  <path
+     d="m 202.76945,514.10209 c 0,-1.9747 1.60056,-3.57527 3.57559,-3.57527 1.97441,0 3.57496,1.60057 3.57496,3.57527 0,1.9741 -1.60055,3.57528 -3.57496,3.57528 -1.97503,0 -3.57559,-1.60118 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="reservoir_station" />
+  <path
+     d="m 188.73082,528.05071 c 0,-1.97473 1.60057,-3.57529 3.57559,-3.57529 1.9744,0 3.57497,1.60056 3.57497,3.57529 0,1.9747 -1.60057,3.57527 -3.57497,3.57527 -1.97502,0 -3.57559,-1.60057 -3.57559,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="chestnut hill_station" />
+  <path
+     d="m 174.68404,542.07036 c 0,-1.97473 1.60057,-3.57529 3.57559,-3.57529 1.9744,0 3.57496,1.60056 3.57496,3.57529 0,1.97469 -1.60056,3.57526 -3.57496,3.57526 -1.97502,0 -3.57559,-1.60057 -3.57559,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="newton center_station" />
+  <path
+     d="m 160.19956,556.47168 c 0,-1.97472 1.60056,-3.57529 3.57558,-3.57529 1.97442,0 3.57497,1.60057 3.57497,3.57529 0,1.97472 -1.60055,3.57529 -3.57497,3.57529 -1.97502,0 -3.57558,-1.60057 -3.57558,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="newton highlands_station" />
+  <path
+     d="m 146.15816,570.49136 c 0,-1.97471 1.60056,-3.57527 3.57559,-3.57527 1.97439,0 3.57496,1.60056 3.57496,3.57527 0,1.97471 -1.60057,3.57528 -3.57496,3.57528 -1.97503,0 -3.57559,-1.60057 -3.57559,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="eliot_station" />
+  <path
+     d="m 132.05862,584.51099 c 0,-1.97473 1.60057,-3.57527 3.57561,-3.57527 1.9744,0 3.57495,1.60054 3.57495,3.57527 0,1.97472 -1.60055,3.57527 -3.57495,3.57527 -1.97504,0 -3.57561,-1.60055 -3.57561,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="waban_station" />
+  <path
+     d="m 117.98182,598.53066 c 0,-1.97469 1.60057,-3.57526 3.57562,-3.57526 1.97439,0 3.57494,1.60057 3.57494,3.57526 0,1.97472 -1.60055,3.57529 -3.57494,3.57529 -1.97505,0 -3.57562,-1.60057 -3.57562,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="woodland_station" />
+  <path
+     d="m 95.594079,610.46246 c 0,-1.97472 1.600571,-3.57529 3.575613,-3.57529 1.974388,0 3.574948,1.60057 3.574948,3.57529 0,1.97472 -1.60056,3.57526 -3.574948,3.57526 -1.975042,0 -3.575613,-1.60054 -3.575613,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="riverside_station" />
+  <path
+     d="m 245.11345,471.9908 c 0,-1.9744 1.60054,-3.57527 3.57526,-3.57527 1.97472,0 3.57528,1.60087 3.57528,3.57527 0,1.97471 -1.60056,3.57528 -3.57528,3.57528 -1.97472,0 -3.57526,-1.60057 -3.57526,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="brookline village_station" />
+  <path
+     d="m 359.04117,462.00339 c 0,-1.9744 1.60055,-3.57496 3.57558,-3.57496 1.9744,0 3.57497,1.60056 3.57497,3.57496 0,1.97439 -1.60057,3.57526 -3.57497,3.57526 -1.97503,0 -3.57558,-1.60087 -3.57558,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="prudential_station" />
+  <path
+     d="m 335.94685,515.32252 c 0,-1.97442 1.60055,-3.57498 3.57558,-3.57498 1.97442,0 3.57496,1.60056 3.57496,3.57498 0,1.9747 -1.60054,3.57526 -3.57496,3.57526 -1.97503,0 -3.57558,-1.60056 -3.57558,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="museum of fine arts_station" />
+  <path
+     d="m 347.89433,503.40711 c 0,-1.97439 1.60055,-3.57496 3.57559,-3.57496 1.97439,0 3.57496,1.60057 3.57496,3.57496 0,1.9744 -1.60057,3.57527 -3.57496,3.57527 -1.97504,0 -3.57559,-1.60087 -3.57559,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="northeastern_station" />
+  <path
+     d="m 323.99922,527.26261 c 0,-1.97472 1.60057,-3.57529 3.5756,-3.57529 1.9744,0 3.57495,1.60057 3.57495,3.57529 0,1.97409 -1.60055,3.57526 -3.57495,3.57526 -1.97503,0 -3.5756,-1.60117 -3.5756,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="longwood medical area_station" />
+  <path
+     d="m 299.81577,551.41039 c 0,-1.97472 1.60056,-3.57529 3.57559,-3.57529 1.97439,0 3.57496,1.60057 3.57496,3.57529 0,1.9741 -1.60057,3.57529 -3.57496,3.57529 -1.97503,0 -3.57559,-1.60119 -3.57559,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="fenwood road_station" />
+  <path
+     d="m 287.85424,563.37965 c 0,-1.97472 1.60057,-3.57529 3.5756,-3.57529 1.97439,0 3.57496,1.60057 3.57496,3.57529 0,1.9747 -1.60057,3.57527 -3.57496,3.57527 -1.97503,0 -3.5756,-1.60057 -3.5756,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="mission park_station" />
+  <path
+     d="m 276.11658,575.11812 c 0,-1.97472 1.60055,-3.57529 3.57557,-3.57529 1.97441,0 3.57496,1.60057 3.57496,3.57529 0,1.97471 -1.60055,3.57528 -3.57496,3.57528 -1.97502,0 -3.57557,-1.60057 -3.57557,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="riverway_station" />
+  <path
+     d="m 263.82527,587.34345 c 0,-1.97472 1.60057,-3.57529 3.57558,-3.57529 1.9744,0 3.57497,1.60057 3.57497,3.57529 0,1.97408 -1.60057,3.57526 -3.57497,3.57526 -1.97501,0 -3.57558,-1.60118 -3.57558,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="back of the hill_station" />
+  <path
+     d="m 251.98353,599.27778 c 0,-1.97472 1.60055,-3.57526 3.57527,-3.57526 1.9744,0 3.57529,1.60054 3.57529,3.57526 0,1.97409 -1.60089,3.57463 -3.57529,3.57463 -1.97472,0 -3.57527,-1.60054 -3.57527,-3.57463"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="heath street_station" />
+  <path
+     d="m 312.22809,538.91488 c 0,-1.9744 1.60057,-3.57526 3.57528,-3.57526 1.9747,0 3.57527,1.60086 3.57527,3.57526 0,1.97472 -1.60057,3.57529 -3.57527,3.57529 -1.97471,0 -3.57528,-1.60057 -3.57528,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="bringham circle_station" />
+  <path
+     d="m 357.69736,490.26272 c 0,-1.97441 1.60058,-3.57528 3.57529,-3.57528 1.97469,0 3.57526,1.60087 3.57526,3.57528 0,1.97471 -1.60057,3.57527 -3.57526,3.57527 -1.97471,0 -3.57529,-1.60056 -3.57529,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="symphony_station" />
+  <path
+     d="m 505.9547,325.05838 c 0,-1.9747 1.60057,-3.57496 3.5756,-3.57496 1.97438,0 3.57495,1.60026 3.57495,3.57496 0,1.9741 -1.60057,3.57496 -3.57495,3.57496 -1.97503,0 -3.5756,-1.60086 -3.5756,-3.57496"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="bowdoin_station" />
+  <path
+     d="m 596.86058,345.02342 c 0,-1.97469 1.60048,-3.57559 3.5752,-3.57559 1.97468,0 3.57529,1.6009 3.57529,3.57559 0,1.97442 -1.60061,3.57529 -3.57529,3.57529 -1.97472,0 -3.5752,-1.60087 -3.5752,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="aquarium_station" />
+  <path
+     d="m 695.81542,249.7814 c 1.37479,1.37502 1.37479,3.60386 0,4.9792 -1.37473,1.37472 -3.60386,1.37472 -4.9792,0 -1.37473,-1.37534 -1.37473,-3.60418 0,-4.9792 1.37473,-1.37504 3.60419,-1.37504 4.9792,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="wood island_station" />
+  <path
+     d="m 720.37767,225.21908 c 1.37473,1.37471 1.37473,3.60386 0,4.9789 -1.37473,1.37472 -3.60384,1.37472 -4.97919,0 -1.37473,-1.37504 -1.37473,-3.60419 0,-4.9789 1.37467,-1.37535 3.60419,-1.37535 4.97919,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="orient heights_station" />
+  <path
+     d="m 745.05371,200.8061 c 1.30007,1.44554 1.18224,3.67152 -0.26351,4.97191 -1.44555,1.30069 -3.67156,1.18255 -4.97216,-0.26304 -1.30049,-1.44587 -1.18258,-3.67153 0.26283,-4.97225 1.44527,-1.30037 3.67149,-1.18253 4.97223,0.26332"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="suffolk downs_station" />
+  <path
+     d="m 769.58833,176.27146 c 1.30008,1.44555 1.18223,3.67121 -0.2635,4.9719 -1.44562,1.30037 -3.67156,1.18256 -4.97231,-0.26299 -1.30034,-1.44616 -1.18251,-3.67149 0.26351,-4.9722 1.4452,-1.30039 3.67149,-1.18288 4.97216,0.26331"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="beachmont_station" />
+  <path
+     d="m 536.26181,355.22188 c -1.96221,0 -3.55325,-1.59054 -3.55325,-3.55274 0,-1.96218 1.59056,-3.55296 3.553,-3.55323 1.96243,0 3.55347,1.59055 3.55347,3.55323 0,1.9622 -1.59079,3.55274 -3.55322,3.55274"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="goverment center_station" />
+  <path
+     d="m 816.9707,125.19344 c 0,-1.97441 1.60058,-3.57528 3.57522,-3.57528 1.9748,0 3.57522,1.60086 3.57522,3.57528 0,1.97472 -1.60042,3.57527 -3.57522,3.57527 -1.97464,0 -3.57522,-1.60055 -3.57522,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="wonderland_station" />
+  <path
+     d="m 787.63212,154.52729 c 0,-1.97441 1.60065,-3.57528 3.5753,-3.57528 1.97472,0 3.57522,1.60087 3.57522,3.57528 0,1.97472 -1.6005,3.57527 -3.57522,3.57527 -1.97465,0 -3.5753,-1.60055 -3.5753,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="revere beach_station" />
+  <path
+     d="m 650.48449,291.89086 c 0,-1.9744 1.60061,-3.57529 3.57528,-3.57529 1.97473,0 3.5752,1.60089 3.5752,3.57529 0,1.97472 -1.60047,3.57526 -3.5752,3.57526 -1.97467,0 -3.57528,-1.60054 -3.57528,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="maverick_station" />
+  <path
+     d="m 671.25728,274.81189 c -1.38757,-1.38691 -1.38757,-3.63699 0,-5.02438 1.38717,-1.38813 3.63703,-1.38813 5.0246,0 1.38818,1.3879 1.38818,3.63749 0,5.02539 -1.38736,1.38738 -3.63723,1.38738 -5.0248,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="airport_station" />
+  <path
+     d="m 561.48646,215.73557 c 0,-1.9741 1.60054,-3.57432 3.57526,-3.57432 1.97441,0 3.57529,1.60022 3.57529,3.57432 0,1.97472 -1.60088,3.57558 -3.57529,3.57558 -1.97472,0 -3.57526,-1.60086 -3.57526,-3.57558"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="community college_station" />
+  <path
+     d="m 561.48646,190.49669 c 0,-1.97441 1.60054,-3.57495 3.57526,-3.57495 1.97441,0 3.57529,1.60054 3.57529,3.57495 0,1.9744 -1.60088,3.57527 -3.57529,3.57527 -1.97472,0 -3.57526,-1.60087 -3.57526,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="sullivan square_station" />
+  <path
+     d="m 561.48646,165.25751 c 0,-1.97472 1.60054,-3.57496 3.57526,-3.57496 1.97441,0 3.57529,1.60024 3.57529,3.57496 0,1.97472 -1.60088,3.57495 -3.57529,3.57495 -1.97472,0 -3.57526,-1.60023 -3.57526,-3.57495"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="assembly_station" />
+  <path
+     d="m 561.48646,140.01815 c 0,-1.9744 1.60054,-3.57526 3.57526,-3.57526 1.97441,0 3.57529,1.60086 3.57529,3.57526 0,1.97472 -1.60088,3.57529 -3.57529,3.57529 -1.97472,0 -3.57526,-1.60057 -3.57526,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="wellington_station" />
+  <path
+     d="m 561.48646,89.539557 c 0,-1.974097 1.60054,-3.574957 3.57526,-3.574957 1.97441,0 3.57529,1.60086 3.57529,3.574957 0,1.974725 -1.60088,3.575281 -3.57529,3.575281 -1.97472,0 -3.57526,-1.600556 -3.57526,-3.575281"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="oak grove_station" />
+  <path
+     d="m 278.91282,683.11012 c 0,-1.97471 1.60055,-3.57528 3.57527,-3.57528 1.97441,0 3.57529,1.60057 3.57529,3.57528 0,1.97472 -1.60088,3.57527 -3.57529,3.57527 -1.97472,0 -3.57527,-1.60055 -3.57527,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="green street_station" />
+  <path
+     d="m 308.4511,653.54362 c 0,-1.97471 1.60057,-3.57528 3.57529,-3.57528 1.97439,0 3.57527,1.60057 3.57527,3.57528 0,1.9747 -1.60088,3.57527 -3.57527,3.57527 -1.97472,0 -3.57529,-1.60057 -3.57529,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="stony brook_station" />
+  <path
+     d="m 461.51119,500.7213 c 0,-1.94775 1.57885,-3.52661 3.52634,-3.52661 1.94775,0 3.5266,1.57886 3.5266,3.52661 0,1.94749 -1.57885,3.52634 -3.5266,3.52634 -1.94749,0 -3.52634,-1.57885 -3.52634,-3.52634"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="tufts medical center_station" />
+  <path
+     d="m 565.09746,379.2576 c -1.96218,0 -3.55324,-1.59055 -3.55324,-3.55273 0,-1.96221 1.59056,-3.55325 3.55301,-3.55325 1.96243,0 3.55349,1.59056 3.55349,3.55325 0,1.96194 -1.59081,3.55273 -3.55326,3.55273"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="state street_station" />
+  <path
+     d="m 507.75545,461.23768 c -1.98087,0 -3.58664,-1.60551 -3.58664,-3.5864 0,-1.98088 1.60577,-3.58663 3.58664,-3.58692 1.9809,0 3.58664,1.60579 3.58664,3.5864 0,1.98089 -1.60574,3.58692 -3.58664,3.58692"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="chinatown_station" />
+  <path
+     d="m 249.46018,712.69499 c 0,-1.97406 1.60056,-3.57454 3.57529,-3.57454 1.97439,0 3.57526,1.60048 3.57526,3.57454 0,1.97479 -1.60087,3.57534 -3.57526,3.57534 -1.97473,0 -3.57529,-1.60055 -3.57529,-3.57534"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="forest hills_station" />
+  <path
+     d="m 562.64352,279.08273 c -1.38766,-1.38692 -1.38766,-3.63701 0,-5.02439 1.38715,-1.38815 3.63697,-1.38815 5.02461,0 1.38816,1.3879 1.38816,3.63749 0,5.02539 -1.3874,1.38738 -3.63721,1.38738 -5.02486,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="north station_station" />
+  <path
+     d="m 562.64352,325.36284 c -1.38766,-1.3869 -1.38766,-3.63699 0,-5.02439 1.38715,-1.38813 3.63697,-1.38813 5.02461,0 1.38816,1.3879 1.38816,3.63749 0,5.02539 -1.3874,1.38739 -3.63721,1.38739 -5.02486,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="haymarket_station" />
+  <path
+     d="m 414.58075,547.40455 c 0,-1.97439 1.60057,-3.57528 3.57529,-3.57528 1.97472,0 3.57527,1.60089 3.57527,3.57528 0,1.97472 -1.60055,3.57528 -3.57527,3.57528 -1.97472,0 -3.57529,-1.60056 -3.57529,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="massachusetts ave_station" />
+  <path
+     d="m 436.55532,525.30662 c 0,-1.9744 1.60056,-3.57527 3.57528,-3.57527 1.97472,0 3.57526,1.60087 3.57526,3.57527 0,1.97472 -1.60054,3.57528 -3.57526,3.57528 -1.97472,0 -3.57528,-1.60056 -3.57528,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="back bay_station" />
+  <path
+     d="m 391.02751,571.07896 c 0,-1.97439 1.60056,-3.57526 3.57528,-3.57526 1.9747,0 3.57526,1.60087 3.57526,3.57526 0,1.97472 -1.60056,3.57529 -3.57526,3.57529 -1.97472,0 -3.57528,-1.60057 -3.57528,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="ruggles_station" />
+  <path
+     d="m 367.61345,594.42902 c 0,-1.97441 1.60056,-3.57528 3.57528,-3.57528 1.97472,0 3.57527,1.60087 3.57527,3.57528 0,1.97472 -1.60055,3.57527 -3.57527,3.57527 -1.97472,0 -3.57528,-1.60055 -3.57528,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="roxbury crossing_station" />
+  <path
+     d="m 338.18646,623.89858 c 0,-1.97439 1.60054,-3.57526 3.57526,-3.57526 1.97472,0 3.57529,1.60087 3.57529,3.57526 0,1.97472 -1.60057,3.57529 -3.57529,3.57529 -1.97472,0 -3.57526,-1.60057 -3.57526,-3.57529"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="jackson square_station" />
+  <path
+     d="m 561.57208,114.98988 c 0,-1.97441 1.60055,-3.57529 3.57527,-3.57529 1.97472,0 3.57529,1.60088 3.57529,3.57529 0,1.97472 -1.60057,3.57527 -3.57529,3.57527 -1.97472,0 -3.57527,-1.60055 -3.57527,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="malden center_station" />
+  <path
+     d="m 570.24928,719.13188 c 0,-1.97473 1.60057,-3.5752 3.57528,-3.5752 1.97471,0 3.57528,1.60047 3.57528,3.5752 0,1.97467 -1.60057,3.57528 -3.57528,3.57528 -1.97471,0 -3.57528,-1.60061 -3.57528,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="fields corner_station" />
+  <path
+     d="m 570.12426,736.58157 c 0,-1.97467 1.60057,-3.57528 3.57528,-3.57528 1.97471,0 3.57526,1.60061 3.57526,3.57528 0,1.97473 -1.60055,3.57521 -3.57526,3.57521 -1.97471,0 -3.57528,-1.60048 -3.57528,-3.57521"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="shawmut_station" />
+  <path
+     d="m 541.54964,801.51057 c 0,-1.97474 1.60057,-3.57521 3.57527,-3.57521 1.97474,0 3.57529,1.60047 3.57529,3.57521 0,1.97466 -1.60055,3.57528 -3.57529,3.57528 -1.9747,0 -3.57527,-1.60062 -3.57527,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="milton_station" />
+  <path
+     d="m 521.63154,801.51057 c 0,-1.97474 1.60057,-3.57521 3.57529,-3.57521 1.97472,0 3.57528,1.60047 3.57528,3.57521 0,1.97466 -1.60056,3.57528 -3.57528,3.57528 -1.97472,0 -3.57529,-1.60062 -3.57529,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="central avenue_station" />
+  <path
+     d="m 501.53696,801.51057 c 0,-1.97474 1.60057,-3.57521 3.57526,-3.57521 1.97472,0 3.57529,1.60047 3.57529,3.57521 0,1.97466 -1.60057,3.57528 -3.57529,3.57528 -1.97469,0 -3.57526,-1.60062 -3.57526,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="valley road_station" />
+  <path
+     d="m 481.61969,801.51057 c 0,-1.97474 1.60057,-3.57521 3.57528,-3.57521 1.97472,0 3.57529,1.60047 3.57529,3.57521 0,1.97466 -1.60057,3.57528 -3.57529,3.57528 -1.97471,0 -3.57528,-1.60062 -3.57528,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="capen street_station" />
+  <path
+     d="m 561.46661,801.51057 c 0,-1.97474 1.60057,-3.57521 3.57529,-3.57521 1.9747,0 3.57527,1.60047 3.57527,3.57521 0,1.97466 -1.60057,3.57528 -3.57527,3.57528 -1.97472,0 -3.57529,-1.60062 -3.57529,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="butler_station" />
+  <path
+     d="m 570.95592,700.9949 c 0,-1.97405 1.60054,-3.57527 3.57497,-3.57527 1.9744,0 3.57493,1.60122 3.57493,3.57527 0,1.97474 -1.60053,3.57521 -3.57493,3.57521 -1.97443,0 -3.57497,-1.60047 -3.57497,-3.57521"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="savin hill_station" />
+  <path
+     d="m 573.8237,757.49626 c -1.98089,0 -3.58665,-1.60575 -3.58665,-3.58663 0,-1.98061 1.60576,-3.5869 3.58665,-3.5869 1.98088,0 3.58663,1.60575 3.58663,3.58636 0,1.98088 -1.60575,3.58669 -3.58663,3.58717"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="ashmont_station" />
+  <path
+     d="m 461.46255,801.52719 c 0,-1.97473 1.60057,-3.57533 3.57529,-3.57533 1.97472,0 3.57529,1.6006 3.57529,3.57533 0,1.97406 -1.60057,3.5746 -3.57529,3.5746 -1.97472,0 -3.57529,-1.60054 -3.57529,-3.5746"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="mattapan_station" />
+  <path
+     d="m 570.12426,782.97049 c 0,-1.97481 1.60057,-3.57529 3.57528,-3.57529 1.97471,0 3.57526,1.60048 3.57526,3.57529 0,1.97472 -1.60055,3.5752 -3.57526,3.5752 -1.97471,0 -3.57528,-1.60048 -3.57528,-3.5752"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="cedar grove_station" />
+  <path
+     d="m 477.77716,354.31939 c 0,-1.97441 1.60054,-3.57526 3.57591,-3.57526 1.97407,0 3.57464,1.60085 3.57464,3.57526 0,1.97442 -1.60057,3.57498 -3.57464,3.57498 -1.97537,0 -3.57591,-1.60056 -3.57591,-3.57498"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="charles mgh_station" />
+  <path
+     d="m 606.53924,534.51364 c 0,-1.97472 1.60061,-3.57528 3.57501,-3.57528 1.97439,0 3.57493,1.60056 3.57493,3.57528 0,1.97472 -1.60054,3.57527 -3.57493,3.57527 -1.9744,0 -3.57501,-1.60055 -3.57501,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="broadway_station" />
+  <path
+     d="m 606.53918,573.29904 c 0,-1.97471 1.60067,-3.57526 3.57534,-3.57526 1.97466,0 3.57534,1.60055 3.57534,3.57526 0,1.97409 -1.60068,3.57463 -3.57534,3.57463 -1.97467,0 -3.57534,-1.60054 -3.57534,-3.57463"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="andrew_station" />
+  <path
+     d="m 668.11755,719.24803 c 0,-1.97405 1.60061,-3.5746 3.57527,-3.5746 1.9744,0 3.57494,1.60055 3.57494,3.5746 0,1.97474 -1.60054,3.57528 -3.57494,3.57528 -1.97466,0 -3.57527,-1.60054 -3.57527,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="north quincy_station" />
+  <path
+     d="m 693.58629,744.96881 c 0,-1.9748 1.60054,-3.57528 3.57494,-3.57528 1.97446,0 3.575,1.60048 3.575,3.57528 0,1.97473 -1.60054,3.57521 -3.575,3.57521 -1.9744,0 -3.57494,-1.60048 -3.57494,-3.57521"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="wollaston_station" />
+  <path
+     d="m 737.46681,797.163 c 0,-1.97473 1.60061,-3.5752 3.57534,-3.5752 1.97406,0 3.5746,1.60047 3.5746,3.5752 0,1.97479 -1.60054,3.57527 -3.5746,3.57527 -1.97473,0 -3.57534,-1.60048 -3.57534,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="quincy adams_station" />
+  <path
+     d="m 313.72918,186.22511 c -1.37473,1.37504 -3.6042,1.37534 -4.9789,2.4e-4 -1.37504,-1.37504 -1.37504,-3.60386 0,-4.97922 1.3747,-1.37503 3.60417,-1.37503 4.9789,-2.3e-4 1.37502,1.37503 1.37502,3.60417 0,4.97921"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="davis_station" />
+  <path
+     d="m 546.13601,422.68857 c -1.98088,0 -3.58693,-1.60577 -3.58693,-3.58639 0,-1.98088 1.6058,-3.58665 3.58693,-3.58665 1.98089,0 3.58666,1.60551 3.58666,3.58639 0,1.98061 -1.60577,3.58665 -3.58666,3.58665"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="downtown crossing_station" />
+  <path
+     d="m 504.90158,383.03454 c -1.40048,-1.40076 -1.40076,-3.67182 0,-5.07259 1.40074,-1.40048 3.67182,-1.40048 5.07256,0 1.40101,1.40049 1.40101,3.67155 0,5.07231 -1.40076,1.40077 -3.67182,1.40077 -5.07284,0"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="park street_station" />
+  <path
+     d="m 587.8743,457.67509 c 0,1.98088 -1.60552,3.58664 -3.5864,3.58664 -1.98088,0 -3.58666,-1.60576 -3.58666,-3.58664 0,-1.98113 1.60553,-3.58692 3.5864,-3.58692 1.98087,0 3.58666,1.60579 3.58666,3.58692"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="south station_station" />
+  <path
+     d="m 606.62465,611.20017 c 0,-1.97443 1.60047,-3.57529 3.57527,-3.57529 1.97473,0 3.57521,1.60086 3.57521,3.57529 0,1.9747 -1.60048,3.57526 -3.57521,3.57526 -1.9748,0 -3.57527,-1.60056 -3.57527,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="jfk umass_station" />
+  <path
+     d="m 719.63193,770.36425 c 0,-1.9744 1.60061,-3.5752 3.57527,-3.5752 1.97473,0 3.57522,1.6008 3.57522,3.5752 0,1.97466 -1.60049,3.57527 -3.57522,3.57527 -1.97466,0 -3.57527,-1.60061 -3.57527,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="quincy center_station" />
+  <path
+     d="m 737.86121,836.32405 c 0,-1.97473 1.60048,-3.57527 3.5752,-3.57527 1.97466,0 3.57527,1.60054 3.57527,3.57527 0,1.97406 -1.60061,3.5746 -3.57527,3.5746 -1.97472,0 -3.5752,-1.60054 -3.5752,-3.5746"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="braintree_station" />
+  <path
+     d="m 405.89314,282.10762 c 0,-1.97409 1.60086,-3.57495 3.57526,-3.57495 1.97472,0 3.57528,1.60086 3.57528,3.57495 0,1.97473 -1.60056,3.57528 -3.57528,3.57528 -1.9744,0 -3.57526,-1.60055 -3.57526,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="central_station" />
+  <path
+     d="m 373.10159,249.68288 c 0,-1.9744 1.60056,-3.57527 3.57529,-3.57527 1.97471,0 3.57494,1.60087 3.57494,3.57527 0,1.97472 -1.60023,3.57528 -3.57494,3.57528 -1.97473,0 -3.57529,-1.60056 -3.57529,-3.57528"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="harvard_station" />
+  <path
+     d="m 340.45754,216.69766 c 0,-1.9744 1.60057,-3.57528 3.57529,-3.57528 1.97472,0 3.57496,1.60088 3.57496,3.57528 0,1.97472 -1.60024,3.57527 -3.57496,3.57527 -1.97472,0 -3.57529,-1.60055 -3.57529,-3.57527"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="porter_station" />
+  <path
+     d="m 438.46309,314.91055 c 0,-1.97473 1.60055,-3.57499 3.57526,-3.57499 1.97472,0 3.57529,1.60026 3.57529,3.57499 0,1.97471 -1.60057,3.57526 -3.57529,3.57526 -1.97471,0 -3.57526,-1.60055 -3.57526,-3.57526"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="kendall mit_station" />
+  <path
+     d="m 276.05065,148.45224 c 1.37472,-1.37502 3.60418,-1.37502 4.9789,0 1.37504,1.37504 1.37504,3.60386 0,4.97922 -1.37504,1.37472 -3.60418,1.37472 -4.9789,0 -1.37502,-1.37504 -1.37502,-3.60418 0,-4.97922"
+     style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000024;stroke-width:0.893862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="alewife_station" />
+</svg>
