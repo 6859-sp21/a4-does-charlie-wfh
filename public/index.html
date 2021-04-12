@@ -352,7 +352,7 @@
         </section>
 
         <section id="outro"></section>
-        <div id="martini-glass-viz" style="margin-top:100px; margin-bottom:0px; z-index:100;"></div>
+        <div id="martini-glass-viz" style="margin-top:200px; margin-bottom:0px; z-index:100;"></div>
         <script src="./main.min.js"></script>
     </main>
 
@@ -366,6 +366,7 @@
     <script>
         //covid_group.attr('visibility','hidden');
         const filepath = "abstraction-transition.svg";
+        const transitionTime = 1000;
 
         const paths_metadata = (
         {
@@ -484,13 +485,13 @@
 
         figure.selectAll(".abstraction-image")
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",0);
 
         figure.selectAll("#intro-viz")
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",0);
 
@@ -500,7 +501,7 @@
         if (response.index == 0){
             figure.selectAll("#intro-viz")
             .transition()
-            .duration(500)
+            .duration(transitionTime)
             .ease(d3.easeLinear)
             .style("opacity",1);
 
@@ -510,7 +511,7 @@
 
         figure.selectAll("#single-highlight-viz")
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",0);
 
@@ -520,7 +521,7 @@
         if (response.index == 5){
             figure.selectAll("#single-highlight-viz")
             .transition()
-            .duration(500)
+            .duration(transitionTime)
             .ease(d3.easeLinear)
             .style("opacity",1);
 
@@ -529,7 +530,7 @@
 
             figure.selectAll('.abstraction-transition')
             .transition()
-            .duration(500)
+            .duration(transitionTime)
             .ease(d3.easeLinear)
             .style("opacity",0);
         }
@@ -537,19 +538,19 @@
 
         transitionImage.select("g[id='census_tracts']")
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .style("opacity", 0);
 
         if (response.index<2){
         figure.selectAll('.abstraction-transition')
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",0);
 
         figure.selectAll(`#svg-image${response.index}`)
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",1);
         };
@@ -557,7 +558,7 @@
         if (response.index==2){
         figure.selectAll(`#svg-image${response.index}`)
         .transition()
-        .duration(500)
+        .duration(transitionTime)
         .ease(d3.easeLinear)
         .style("opacity",1);
 
@@ -614,12 +615,12 @@
         if (response.index==4){
             transitionImage.select("g[id='census_tracts']")
             .transition()
-            .duration(500)
+            .duration(transitionTime)
             .style("opacity", 1);
 
             figure.selectAll('.abstraction-transition')
             .transition()
-            .duration(500)
+            .duration(transitionTime)
             .ease(d3.easeLinear)
             .style("opacity",1);
         };
