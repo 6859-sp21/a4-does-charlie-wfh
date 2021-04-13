@@ -238,7 +238,10 @@
           margin-top: -10px;
         }
 
-
+        a{
+            color: #118342;
+            text-decoration: none;
+        }
 
 
     </style>
@@ -339,7 +342,8 @@
                     <p>
                         <br />
                         <br />
-			The geographically-accurate tracks look more like this, bending their way under, over, and around the area's streets, rivers, and famously, one of it's colleges. 
+			The geographically-accurate tracks look more like this, bending their way under, over, and around the area's streets, rivers, and famously, 
+                        <a href="https://www.thecrimson.com/column/the-snollygoster/article/2012/10/19/harvard-eminent-domain/">one of it's colleges. </a>
 			Its true form is a far cry from the tidy lines we're used to seeing on the official map - 
 			which are in turn inspired by the infamous re-design of the London Underground Tube map in 1931 by Harry Beck.
                         <br />
@@ -406,6 +410,21 @@
         <section id="outro"></section>
         <div id="martini-glass-viz" style="margin-top:200px; margin-bottom:0px; z-index:100;"></div>
         <script src="./main.min.js"></script>
+        <div id="acknowledgments" style="margin-right: 200px; margin-bottom:10px">
+            <p>
+                Visualization by Georgios Varnavides and Max L'Etoile for MIT Class 6.859.
+
+                All our data regarding the T came directly from the <a href="https://mbta-massdot.opendata.arcgis.com/">MBTA.</a>
+                Income data came from <a href="https://www.opportunityatlas.org/">The Opportunity Atlas</a> and COVID data was taken from
+                <a href="https://covid.cdc.gov/covid-data-tracker/#datatracker-home">the CDC</a>.
+                We took inspiration from Mike Barry and Brian Card's <a href="http://mbtaviz.github.io/">Visualizing MBTA Data</a> and changed our
+                ridership encoding scheme after finding a thematically similar visualization by Aucher Serr,
+                called <a href="https://projects.two-n.com/mta/">MTA Ridership Changes due to COVID-19</a>.
+
+                We also utilized the Javascript Libraries <a href="https://d3js.org/">D3.js</a>, <a href="https://github.com/russellgoldenberg/scrollama">Scrollama</a>,
+                and <a href="https://lodash.com/">Lodash</a>.
+            </p>
+        </div>
     </main>
 
     <!-- <div class='debug'></div> -->
